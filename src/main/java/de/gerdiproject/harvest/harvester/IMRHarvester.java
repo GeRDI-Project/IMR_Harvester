@@ -15,7 +15,12 @@
  */
 package de.gerdiproject.harvest.harvester;
 
-import de.gerdiproject.harvest.harvester.AbstractHarvester;
+import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
+import java.util.List;
+import de.gerdiproject.harvest.fao.json.DomainsResponse.Domain;
+
+import de.gerdiproject.harvest.IDocument;
 
 
 /**
@@ -23,14 +28,44 @@ import de.gerdiproject.harvest.harvester.AbstractHarvester;
  *
  * @author Arnd Plumhoff
  */
-public class IMRHarvester extends AbstractHarvester // TODO choose an AbstractHarvester implementation that suits your needs
+public class IMRHarvester extends AbstractListHarvester<Domain> // TODO choose an AbstractHarvester implementation that suits your needs
 {
     /**
      * Default Constructor that is called by the MainContext.
      */
     public IMRHarvester()
     {
-        super();
-        // TODO initialize final fields
+    	super(1);
+    	// TODO initialize final fields
     }
+
+	@Override
+	protected boolean harvestInternal(int startIndex, int endIndex) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected int initMaxNumberOfDocuments() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected String initHash() throws NoSuchAlgorithmException, NullPointerException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Collection<Domain> loadEntries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected List<IDocument> harvestEntry(Domain entry) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
