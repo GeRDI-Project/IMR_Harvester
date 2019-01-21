@@ -13,19 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.gerdiproject.harvest.imr.constants;
+package de.gerdiproject.harvest.imr.json;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import java.util.List;
+
+import lombok.Data;
 
 /**
- * This class contains constants of IMR parameters.
- *
+ * This class represents a generic SeaAroundUs JSON response.
  * @author Robin Weiss
+ *
+ * @param <T> the type of data, carried by the response
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ImrConstants
+@Data
+public class FeatureCollection <T>
 {
-    public static final String GET_POSITIONS_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getpositions";
-    public static final String GET_YEARS_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyears/%s";
+    private List<Feature<T>> features;
+    private String type;
 }

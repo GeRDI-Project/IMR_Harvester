@@ -44,9 +44,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ImrDataCiteConstants
 {
-    // source id
-    public static final String SOURCE_ID = "%s_%s_%s";
-
 
     // RESOURCE TYPE
     public static final ResourceType RESOURCE_TYPE = createResourceType();
@@ -66,7 +63,8 @@ public class ImrDataCiteConstants
     public static final short EARLIEST_PUBLICATION_YEAR = 1961;
 
     // WEB LINKS
-    public static final String VIEW_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view?/%s";
+    public static final String VIEW_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view?station=%s";
+    public static final String VIEW_NAME = "View %s";
     public static final WebLink LOGO_WEB_LINK = createLogoWebLink();
     public static final String TEMPLATE_DOCUMENT_NAME = "About";
 

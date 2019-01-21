@@ -16,7 +16,7 @@
  */
 package de.gerdiproject.harvest.imr.json;
 
-import java.util.List;
+import lombok.Data;
 
 /**
  * This class represents a JSON object that is part of the response to a Imr getpositions request.
@@ -24,32 +24,9 @@ import java.util.List;
  *
  * @author Arnd Plumhoff
  */
-public final class GeometryResponse
+@Data
+public final class StationProperties
 {
-	private String type;
-	private List<Double> coordinates;
-
-
-	public String getType()
-	{
-		return type;
-	}
-
-
-	public void setType(String value)
-	{
-		this.type = value;
-	}
-
-
-	public List<Double> getCoordinates()
-	{
-		return coordinates;
-	}
-
-
-	public void setCoordinates(List<Double> value)
-	{
-		this.coordinates = value;
-	}
+	private String id;
+	private String name;
 }
