@@ -16,6 +16,7 @@
  */
 package de.gerdiproject.harvest.imr.json;
 
+import lombok.Data;
 
 /**
  * This class represents a JSON object that is part of the response to a Imr 15.11.2018 request.
@@ -23,58 +24,11 @@ package de.gerdiproject.harvest.imr.json;
  *
  * @author Arnd Plumhoff
  */
+@Data
 public final class ValueResponse
 {
 	private int x;
 	private double y;
 	private String id;
 	private String name;
-
-	public int getX()
-	{
-		return x;
-	}
-
-
-	public void setX(int value)
-	{
-		this.x = value;
-	}
-
-
-	public double getY()
-	{
-		return y;
-	}
-
-
-	public void setY(double value)
-	{
-		this.y = value;
-	}
-
-
-	public String getId()
-	{
-		return id;
-	}
-
-
-	public void setId(String value)
-	{
-		this.id = value;
-	}
-	
-
-	public String getName() 
-	{
-		return name;
-	}
-
-
-	public void setName(String name) 
-	{
-		this.name = name;
-	}
-
 }

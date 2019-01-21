@@ -27,20 +27,22 @@ import de.gerdiproject.json.datacite.ResourceType;
 import de.gerdiproject.json.datacite.enums.DescriptionType;
 import de.gerdiproject.json.datacite.enums.NameType;
 import de.gerdiproject.json.datacite.enums.ResourceTypeGeneral;
-import de.gerdiproject.json.datacite.extension.WebLink;
-import de.gerdiproject.json.datacite.extension.abstr.AbstractResearch;
-import de.gerdiproject.json.datacite.extension.constants.ResearchDisciplineConstants;
-import de.gerdiproject.json.datacite.extension.enums.WebLinkType;
+import de.gerdiproject.json.datacite.extension.generic.AbstractResearch;
+import de.gerdiproject.json.datacite.extension.generic.WebLink;
+import de.gerdiproject.json.datacite.extension.generic.constants.ResearchDisciplineConstants;
+import de.gerdiproject.json.datacite.extension.generic.enums.WebLinkType;
 import de.gerdiproject.json.datacite.nested.PersonName;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 /**
- * This static class contains constants that are used for creating DataCite
- * documents of FAOSTAT.
+ * This class contains constants that are used for creating DataCite
+ * documents of IMR.
  *
  * @author Arnd Plumhoff
  */
-
-public class IMRDataCiteConstants
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class ImrDataCiteConstants
 {
     // source id
     public static final String SOURCE_ID = "%s_%s_%s";
@@ -89,17 +91,6 @@ public class IMRDataCiteConstants
     public static final String DIMENSION_URL = "http://fenixservices.fao.org/faostat/api/%s/%s%s%s/?show_lists=true";
 
 
-    /**
-     * Private constructor, because this is a static class.
-     */
-    private IMRDataCiteConstants()
-    {
-    }
-
-
-    /**
-     * @return
-     */
     private static List<AbstractResearch> createResearchDisciplines()
     {
         return Collections.unmodifiableList(

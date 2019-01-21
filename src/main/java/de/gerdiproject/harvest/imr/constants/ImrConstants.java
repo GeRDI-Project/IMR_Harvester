@@ -15,23 +15,16 @@
  */
 package de.gerdiproject.harvest.imr.constants;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
- * This static class contains constants of FAO harvester parameters.
+ * This class contains constants of IMR parameters.
  *
  * @author Robin Weiss
  */
-public class IMRParameterConstants
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class ImrConstants
 {
-    public static final String VERSION_KEY = "version";
-    public static final String LANGUAGE_KEY = "language";
-    public static final String VERSION_DEFAULT = "v1";
-    public static final String LANGUAGE_DEFAULT = "en";
-
-
-    /**
-     * Private constructor, because this is a static class.
-     */
-    private IMRParameterConstants()
-    {
-    }
+    public static final String GET_POSITIONS_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getpositions";
 }

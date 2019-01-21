@@ -15,32 +15,26 @@
  */
 package de.gerdiproject.harvest;
 
-import de.gerdiproject.harvest.config.parameters.AbstractParameter;
-import de.gerdiproject.harvest.config.parameters.StringParameter;
-import de.gerdiproject.harvest.harvester.IMRHarvester;
-import de.gerdiproject.harvest.imr.constants.IMRDataCiteConstants;
-import de.gerdiproject.harvest.imr.constants.IMRParameterConstants;
-
 import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.annotation.WebListener;
 
+import de.gerdiproject.harvest.application.ContextListener;
+import de.gerdiproject.harvest.etls.AbstractETL;
+import de.gerdiproject.harvest.etls.ImrETL;
+
 /**
- * This class initializes the {@linkplain IMRHarvester} and all required classes.
+ * This class initializes the {@linkplain ImrETL} and all required classes.
  *
  * @author Arnd Plumhoff
  */
 @WebListener
-public class IMRContextListener extends ContextListener<IMRHarvester>
+public class IMRContextListener extends ContextListener
 {
-	
-	  @Override
-	    protected List<AbstractParameter<?>> getHarvesterSpecificParameters()
-	    {
-	        StringParameter versionParam = new StringParameter(IMRParameterConstants.VERSION_KEY, IMRParameterConstants.VERSION_DEFAULT);
-	        StringParameter languageParam = new StringParameter(IMRParameterConstants.LANGUAGE_KEY, IMRParameterConstants.LANGUAGE_DEFAULT);
-
-	        return Arrays.asList(versionParam, languageParam);
-	    }
+    @Override
+    protected List<? extends AbstractETL<?, ?>> createETLs()
+    {
+        return Arrays.asList(new ImrETL());
+    }
 }
