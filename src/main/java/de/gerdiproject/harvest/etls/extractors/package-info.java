@@ -15,8 +15,8 @@
  *  under the License.
  */
 /**
- * 
- * 
+ *
+ *
  * @author Robin Weiss
  */
 package de.gerdiproject.harvest.etls.extractors;

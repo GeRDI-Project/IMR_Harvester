@@ -1,5 +1,5 @@
 /**
- * Copyright © 2017 Robin Weiss (http://www.gerdi-project.de)
+ * Copyright © 2019 Arnd Plumhoff, Robin Weiss (http://www.gerdi-project.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,13 @@ package de.gerdiproject.harvest.imr.constants;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import de.gerdiproject.json.datacite.Creator;
 import de.gerdiproject.json.datacite.ResourceType;
-import de.gerdiproject.json.datacite.enums.DescriptionType;
+import de.gerdiproject.json.datacite.Rights;
+import de.gerdiproject.json.datacite.Subject;
 import de.gerdiproject.json.datacite.enums.NameType;
 import de.gerdiproject.json.datacite.enums.ResourceTypeGeneral;
 import de.gerdiproject.json.datacite.extension.generic.AbstractResearch;
@@ -46,7 +45,7 @@ public class ImrDataCiteConstants
 {
 
     // RESOURCE TYPE
-    public static final ResourceType RESOURCE_TYPE = createResourceType();
+    public static final ResourceType STATION_RESOURCE_TYPE = createResourceType();
 
     // CREATOR
     public static final List<Creator> CREATORS = createCreators();
@@ -57,16 +56,17 @@ public class ImrDataCiteConstants
     public static final String REPOSITORY_ID = "IMR";
     public static final List<AbstractResearch> DISCIPLINES = createResearchDisciplines();
 
-    // CONTRIBUTORS
-    public static final String METADATA_CONTACT_NAME = "Contact name";
-    public static final String METADATA_CONTACT_ORGANISATION = "Contact organisation";
-    public static final short EARLIEST_PUBLICATION_YEAR = 1961;
+    // TITLES
+    public static final String STATION_TITLE_ENGLISH = "Norwegian Hydrographic Station: %s";
+    public static final String STATION_TITLE_NORWEGIAN = "Stasjon: %s";
+
 
     // WEB LINKS
     public static final String VIEW_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view?station=%s";
     public static final String VIEW_NAME = "View %s";
     public static final WebLink LOGO_WEB_LINK = createLogoWebLink();
-    public static final String TEMPLATE_DOCUMENT_NAME = "About";
+    public static final WebLink STATION_OVERVIEW_LINK = createStationOverviewWebLink();
+
 
     // DATES
     public static final String META_DATA_TIME_COVERAGE = "Time coverage";
@@ -75,18 +75,28 @@ public class ImrDataCiteConstants
         Pattern.compile("\\D+(\\d\\d\\d\\d)\\D(\\d\\d\\d\\d)[\\d\\D]+$");
     public static final String DATE_PARSE_ERROR = "Could not parse date: %s";
 
-    // DESCRIPTIONS
-    public static final String DESCRIPTION_FORMAT = "%s:%n%s";
-    public static final Map<String, DescriptionType> RELEVANT_DESCRIPTIONS = createRelevantDescriptions();
+    // LANGUAGE
+    public static final String LANGUAGE_NORWEGIAN = "no";
+    public static final String LANGUAGE_ENGLISH = "en";
 
     // FORMATS
-    public static final List<String> FORMATS = Collections.unmodifiableList(Arrays.asList("CSV"));
+    public static final String JSON_FORMAT = "JSON";
+    public static final List<String> FORMATS = Collections.unmodifiableList(Arrays.asList(JSON_FORMAT));
 
-    // DOCUMENTS
-    public static final String DOCUMENT_URL = "http://fenixservices.fao.org/faostat/static/documents/%s";
+    // SUBJECTS
+    public static final List<Subject> STATION_SUBJECTS = createStationSubjects();
 
-    // DIMENSIONS
-    public static final String DIMENSION_URL = "http://fenixservices.fao.org/faostat/api/%s/%s%s%s/?show_lists=true";
+    // RIGHTS
+    public static final List<Rights> STATION_RIGHTS = createRightsList();
+
+    // RESEARCH DATA
+    public static final String STATION_SALINITY_ON_DATE_TITLE = "Salinity on %s";
+    public static final String STATION_SALINITY_OF_YEAR_TITLE = "Salinity in Year %d";
+    public static final String STATION_MEAN_SALINITY_OF_YEAR_TITLE = "Mean Salinity in Year %d";
+    public static final String STATION_TEMPERATURE_ON_DATE_TITLE = "Temperature on %s";
+    public static final String STATION_TEMPERATURE_OF_YEAR_TITLE = "Temperature in Year %d";
+    public static final String STATION_MEAN_TEMPERATURE_OF_YEAR_TITLE = "Mean Temperature in Year %d";
+
 
 
     private static List<AbstractResearch> createResearchDisciplines()
@@ -96,21 +106,39 @@ public class ImrDataCiteConstants
                        ResearchDisciplineConstants.OCEANOGRAPHY));
     }
 
-    /**
-     * Initializes a map of metadata names that contain descriptions that are
-     * relevant for documents.
-     *
-     * @return a map of {@linkplain MetadataResponse} metadata_label field
-     *         values
-     */
-    private static Map<String, DescriptionType> createRelevantDescriptions()
+
+    private static List<Rights> createRightsList()
     {
-        Map<String, DescriptionType> relavantDescriptions = new HashMap<>();
-        relavantDescriptions.put("Data description", DescriptionType.Abstract);
-        relavantDescriptions.put("Statistical concepts and definitions", DescriptionType.TechnicalInfo);
-        relavantDescriptions.put("Documentation on methodology", DescriptionType.Methods);
-        relavantDescriptions.put("Quality documentation", DescriptionType.Methods);
-        return relavantDescriptions;
+        final Rights rightsEnglish = new Rights(
+            "IMR Data Policy",
+            LANGUAGE_ENGLISH,
+            "https://www.imr.no/filarkiv/2016/09/hi-datapolicy-revised2016-final-eng.pdf/en");
+
+        final Rights rightsNorwegian = new Rights(
+            "Datapolitikk for Havforskningsinstituttet",
+            LANGUAGE_NORWEGIAN,
+            "http://www.imr.no/filarkiv/2013/03/datapolitikk_nmd.pdf/nb-no");
+
+        return Collections.unmodifiableList(Arrays.asList(
+                                                rightsEnglish,
+                                                rightsNorwegian));
+    }
+
+
+    private static List<Subject> createStationSubjects()
+    {
+        return Collections.unmodifiableList(Arrays.asList(
+                                                new Subject("saltholdighet", LANGUAGE_NORWEGIAN),
+                                                new Subject("salinity", LANGUAGE_ENGLISH),
+                                                new Subject("temperatur", LANGUAGE_NORWEGIAN),
+                                                new Subject("temperature", LANGUAGE_ENGLISH),
+                                                new Subject("gjennomsnittlig normalverdi", LANGUAGE_NORWEGIAN),
+                                                new Subject("average normal value", LANGUAGE_ENGLISH),
+                                                new Subject("dybde", LANGUAGE_NORWEGIAN),
+                                                new Subject("depth", LANGUAGE_ENGLISH),
+                                                new Subject("år", LANGUAGE_NORWEGIAN),
+                                                new Subject("years", LANGUAGE_ENGLISH)
+                                            ));
     }
 
 
@@ -121,10 +149,23 @@ public class ImrDataCiteConstants
      */
     private static WebLink createLogoWebLink()
     {
-        WebLink logoLink = new WebLink(
+        final WebLink logoLink = new WebLink(
             "https://www.imr.no/hi/resources/layout/HI-logo-farger-norsk.svg/original");
         logoLink.setType(WebLinkType.ProviderLogoURL);
         return logoLink;
+    }
+
+    /**
+     * Initializes a WebLink that leads to an overview of all stations.
+     *
+     * @return a link to all hydrographic stations
+     */
+    private static WebLink createStationOverviewWebLink()
+    {
+        return new WebLink(
+                   "http://www.imr.no/forskning/forskningsdata/stasjoner/",
+                   "Faste hydrografiske stasjoner",
+                   WebLinkType.Related);
     }
 
 
@@ -135,19 +176,19 @@ public class ImrDataCiteConstants
      */
     private static List<Creator> createCreators()
     {
-        Creator creator = new Creator(new PersonName(PROVIDER, NameType.Organisational));
-        return Arrays.asList(creator);
+        final Creator creator = new Creator(new PersonName(PROVIDER, NameType.Organisational));
+        return Collections.unmodifiableList(Arrays.asList(creator));
     }
 
 
     /**
-     * Initializes the only ResourceType of all IMR documents.
+     * Initializes the ResourceType of all Forskning IMR documents.
      *
-     * @return a ResourceType representing CSV datasets
+     * @return a ResourceType representing measurement data
      */
     private static ResourceType createResourceType()
     {
-        ResourceType resType = new ResourceType("CSV", ResourceTypeGeneral.Dataset);
+        final ResourceType resType = new ResourceType("Measurement Data", ResourceTypeGeneral.Dataset);
         return resType;
     }
 }

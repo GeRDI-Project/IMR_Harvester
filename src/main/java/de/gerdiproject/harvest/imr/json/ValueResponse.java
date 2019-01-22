@@ -27,8 +27,8 @@ import lombok.Data;
 @Data
 public final class ValueResponse
 {
-	private int x;
-	private double y;
-	private String id;
-	private String name;
+    private int x;
+    private double y;
+    private String id;
+    private String name;
 }

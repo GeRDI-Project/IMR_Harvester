@@ -26,6 +26,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ImrConstants
 {
-    public static final String GET_POSITIONS_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getpositions";
-    public static final String GET_YEARS_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyears/%s";
+    // STATIONS
+    private static final String VIEW_STATION = "http://www.imr.no/forskning/forskningsdata/stasjoner/view/";
+
+    public static final String STATION_POSITIONS_URL = VIEW_STATION + "getpositions";
+    public static final String STATION_YEARS_URL = VIEW_STATION + "getyears/%s";
+    public static final String STATION_DATES_IN_YEAR_URL = VIEW_STATION + "getdates/%s/%d";
+    public static final String STATION_DESCRIPTION_URL = VIEW_STATION + "getstationtext/%s";
+
+    public static final String STATION_SALINITY_ON_DATE_URL = VIEW_STATION + "getdata/%s/salinity/%s";
+    public static final String STATION_SALINITY_OF_YEAR_URL = VIEW_STATION + "getyeardata/%s/salinity/%d/1";
+    public static final String STATION_MEAN_SALINITY_OF_YEAR_URL = VIEW_STATION + "getmeanforyear/%s/1/salinity/%d";
+
+    public static final String STATION_TEMPERATURE_ON_DATE_URL = VIEW_STATION + "getdata/%s/temperature/%s";
+    public static final String STATION_TEMPERATURE_OF_YEAR_URL = VIEW_STATION + "getyeardata/%s/temperature/%d/1";
+    public static final String STATION_MEAN_TEMPERATURE_OF_YEAR_URL = VIEW_STATION + "getmeanforyear/%s/1/temperature/%d";
+
+    // SJOMIL
+    public static final String SJOMIL_URL = "http://www.imr.no/sjomil/metadata.html?id=%d&storleik=stor";
 }

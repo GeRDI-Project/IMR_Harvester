@@ -23,6 +23,12 @@
 			<organization>Kiel University</organization>
 			<organizationUrl>http://www.uni-kiel.de/index-e.shtml</organizationUrl>
 		</developer>
+		<developer>
+			<name>Robin Weiss</name>
+			<email>row@informatik.uni-kiel.de</email>
+			<organization>Kiel University</organization>
+			<organizationUrl>http://www.uni-kiel.de/index-e.shtml</organizationUrl>
+		</developer>
 	</developers>
 	
 	<!-- Define Sonatype repository for retrieving SNAPSHOT versions -->

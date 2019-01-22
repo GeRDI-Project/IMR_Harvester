@@ -27,6 +27,6 @@ import lombok.Data;
 @Data
 public final class StationProperties
 {
-	private String id;
-	private String name;
+    private String id;
+    private String name;
 }

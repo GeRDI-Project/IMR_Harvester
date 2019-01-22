@@ -15,9 +15,9 @@
  */
 package de.gerdiproject.harvest.etls;
 
-import de.gerdiproject.harvest.etls.extractors.ImrExtractor;
+import de.gerdiproject.harvest.etls.extractors.ImrStationExtractor;
 import de.gerdiproject.harvest.etls.extractors.ImrStationVO;
-import de.gerdiproject.harvest.etls.transformers.ImrTransformer;
+import de.gerdiproject.harvest.etls.transformers.ImrStationTransformer;
 import de.gerdiproject.json.datacite.DataCiteJson;
 
 
@@ -26,13 +26,13 @@ import de.gerdiproject.json.datacite.DataCiteJson;
  *
  * @author Arnd Plumhoff
  */
-public class ImrETL extends StaticIteratorETL<ImrStationVO,DataCiteJson>
+public class ImrStationETL extends StaticIteratorETL<ImrStationVO, DataCiteJson>
 {
     /**
      * Default Constructor that is called by the MainContext.
      */
-    public ImrETL()
+    public ImrStationETL()
     {
-        super(new ImrExtractor(), new ImrTransformer());
+        super(new ImrStationExtractor(), new ImrStationTransformer());
     }
 }

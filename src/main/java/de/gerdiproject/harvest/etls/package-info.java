@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /**
- * This package contains classes and packages that are related to the {@linkplain de.gerdiproject.harvest.etls.ImrETL} and its sub-classes.
+ * This package contains classes and packages that are related to the {@linkplain de.gerdiproject.harvest.etls.ImrStationETL} and its sub-classes.
  *
  * @author Arnd Plumhoff
  */

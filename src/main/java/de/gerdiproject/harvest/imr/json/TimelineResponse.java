@@ -29,7 +29,7 @@ import lombok.Data;
 @Data
 public final class TimelineResponse
 {
-	private List<ValueResponse> min;
-	private List<ValueResponse> max;
-	private List<ValueResponse> value;
+    private List<ValueResponse> min;
+    private List<ValueResponse> max;
+    private List<ValueResponse> value;
 }

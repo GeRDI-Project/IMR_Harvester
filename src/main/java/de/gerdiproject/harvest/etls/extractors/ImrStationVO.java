@@ -24,12 +24,41 @@ import lombok.Value;
 
 /**
  * This value object contains extracted (meta-)data of an IMR station.
- * 
+ *
  * @author Robin Weiss
  */
 @Value
 public class ImrStationVO
 {
     private Feature<StationProperties> feature;
-    private List<Integer> years;
+    private String description;
+    private List<Integer> measurementYears;
+    private List<String> measurementDates;
+
+    /**
+     * Retrieves the earliest date of measurement from
+     * the list of measurement dates.
+     *
+     * @return the earliest measurement date or null, if there are none
+     */
+    public String getEarliestDate()
+    {
+        return measurementDates.isEmpty()
+               ? null
+               : measurementDates.get(measurementDates.size() - 1);
+    }
+
+
+    /**
+     * Retrieves the latest date of measurement from
+     * the list of measurement dates.
+     *
+     * @return the latest measurement date or null, if there are none
+     */
+    public String getLatestDate()
+    {
+        return measurementDates.isEmpty()
+               ? null
+               : measurementDates.get(0);
+    }
 }
