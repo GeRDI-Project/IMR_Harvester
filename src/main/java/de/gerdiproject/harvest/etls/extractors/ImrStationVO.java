@@ -18,8 +18,8 @@ package de.gerdiproject.harvest.etls.extractors;
 
 import java.util.List;
 
-import de.gerdiproject.harvest.imr.json.Feature;
 import de.gerdiproject.harvest.imr.json.StationProperties;
+import de.gerdiproject.json.geo.Feature;
 import lombok.Value;
 
 /**

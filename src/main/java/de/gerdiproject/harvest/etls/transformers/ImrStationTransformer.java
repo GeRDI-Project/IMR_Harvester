@@ -36,6 +36,7 @@ import de.gerdiproject.json.datacite.enums.TitleType;
 import de.gerdiproject.json.datacite.extension.generic.ResearchData;
 import de.gerdiproject.json.datacite.extension.generic.WebLink;
 import de.gerdiproject.json.datacite.extension.generic.enums.WebLinkType;
+import de.gerdiproject.json.geo.Point;
 
 /**
  * This {@linkplain AbstractIteratorTransformer} implementation transforms extracted
@@ -199,8 +200,20 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      */
     private List<GeoLocation> getGeoLocations(ImrStationVO vo)
     {
-        final GeoLocation stationLocation = new GeoLocation(vo.getFeature().getProperties().getName());
-        stationLocation.setPoint(vo.getFeature().getGeometry());
+        GeoLocation stationLocation;
+
+        try {
+            final Point stationGeoPoint = (Point) vo.getFeature().getGeometry().getCoordinates();
+
+            // handle an edge case were a station has null entries as coordinates
+            if (Double.isFinite(stationGeoPoint.getLatitude())) {
+                stationLocation = new GeoLocation(vo.getFeature().getProperties().getName());
+                stationLocation.setPoint(vo.getFeature().getGeometry());
+            } else
+                stationLocation = null;
+        } catch (ClassCastException e) {
+            stationLocation = null;
+        }
 
         return Arrays.asList(stationLocation);
     }

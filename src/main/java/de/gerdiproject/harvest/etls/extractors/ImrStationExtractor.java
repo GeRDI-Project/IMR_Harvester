@@ -25,10 +25,10 @@ import com.google.gson.reflect.TypeToken;
 
 import de.gerdiproject.harvest.etls.AbstractETL;
 import de.gerdiproject.harvest.imr.constants.ImrConstants;
-import de.gerdiproject.harvest.imr.json.Feature;
-import de.gerdiproject.harvest.imr.json.PositionsResponse;
 import de.gerdiproject.harvest.imr.json.StationProperties;
 import de.gerdiproject.harvest.utils.data.HttpRequester;
+import de.gerdiproject.json.geo.Feature;
+import de.gerdiproject.json.geo.FeatureCollection;
 
 /**
  * This {@linkplain AbstractIteratorExtractor} implementation iterates through IMR station
@@ -40,31 +40,44 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 {
     private final HttpRequester httpRequester = new HttpRequester();
 
+    private Iterator<Feature<StationProperties>> featureIterator;
+    private int size = -1;
+
 
     @Override
     public void init(AbstractETL<?, ?> etl)
     {
         super.init(etl);
+
         httpRequester.setCharset(etl.getCharset());
+
+        final Type responseType = new TypeToken<FeatureCollection<StationProperties>>() {} .getType();
+        final FeatureCollection<StationProperties> stationsResponse = httpRequester.getObjectFromUrl(
+                                                                          ImrConstants.STATION_POSITIONS_URL,
+                                                                          responseType);
+        this.size = stationsResponse.getFeatures().size();
+        this.featureIterator = stationsResponse.getFeatures().iterator();
     }
 
 
     @Override
     public String getUniqueVersionString()
     {
-        // TODO Auto-generated method stub
         return null;
+    }
+
+
+    @Override
+    public int size()
+    {
+        return size;
     }
 
 
     @Override
     protected Iterator<ImrStationVO> extractAll() throws ExtractorException
     {
-        final PositionsResponse response = httpRequester.getObjectFromUrl(
-                                               ImrConstants.STATION_POSITIONS_URL,
-                                               PositionsResponse.class);
-
-        return new ImrIterator(response.getFeatures().iterator());
+        return new ImrIterator();
     }
 
 
@@ -76,20 +89,6 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
      */
     private class ImrIterator implements Iterator<ImrStationVO>
     {
-        private final Iterator<Feature<StationProperties>> featureIterator;
-
-
-        /**
-         * Constructor that requires an iterator of {@linkplain Feature}s.
-         *
-         * @param featureIterator an iterator of station {@linkplain Feature}s
-         */
-        public ImrIterator(Iterator<Feature<StationProperties>> featureIterator)
-        {
-            this.featureIterator = featureIterator;
-        }
-
-
         @Override
         public boolean hasNext()
         {
@@ -148,7 +147,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
         private String getDescription(String stationId)
         {
             final String descriptionUrl = String.format(ImrConstants.STATION_DESCRIPTION_URL, stationId);
-            return httpRequester.getObjectFromUrl(descriptionUrl, String.class);
+            return httpRequester.getHtmlFromUrl(descriptionUrl).text();
         }
 
 
