@@ -36,7 +36,6 @@ import de.gerdiproject.json.datacite.enums.TitleType;
 import de.gerdiproject.json.datacite.extension.generic.ResearchData;
 import de.gerdiproject.json.datacite.extension.generic.WebLink;
 import de.gerdiproject.json.datacite.extension.generic.enums.WebLinkType;
-import de.gerdiproject.json.geo.Point;
 
 /**
  * This {@linkplain AbstractIteratorTransformer} implementation transforms extracted
@@ -113,7 +112,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      */
     private List<Title> getTitles(ImrStationVO vo)
     {
-        final String stationName = vo.getFeature().getProperties().getName();
+        final String stationName = vo.getFeature().getProperties().getName().trim();
 
         // use view page title as main title
         final Title titleNorwegian = new Title(
@@ -200,22 +199,19 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      */
     private List<GeoLocation> getGeoLocations(ImrStationVO vo)
     {
-        GeoLocation stationLocation;
+        final List<GeoLocation> geoLocations;
 
-        try {
-            final Point stationGeoPoint = (Point) vo.getFeature().getGeometry().getCoordinates();
+        // check if a valid GeoJson exists
+        if (vo.getFeature().getGeometry() != null) {
+            final String stationName = vo.getFeature().getProperties().getName().trim();
+            final GeoLocation stationLocation = new GeoLocation(stationName);
+            stationLocation.setPoint(vo.getFeature().getGeometry());
 
-            // handle an edge case were a station has null entries as coordinates
-            if (Double.isFinite(stationGeoPoint.getLatitude())) {
-                stationLocation = new GeoLocation(vo.getFeature().getProperties().getName());
-                stationLocation.setPoint(vo.getFeature().getGeometry());
-            } else
-                stationLocation = null;
-        } catch (ClassCastException e) {
-            stationLocation = null;
-        }
+            geoLocations = Arrays.asList(stationLocation);
+        } else
+            geoLocations = null;
 
-        return Arrays.asList(stationLocation);
+        return geoLocations;
     }
 
 
@@ -284,7 +280,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         webLinks.add(ImrDataCiteConstants.STATION_OVERVIEW_LINK);
 
         // add View link
-        final String stationName = vo.getFeature().getProperties().getName();
+        final String stationName = vo.getFeature().getProperties().getName().trim();
         final WebLink viewLink = new WebLink(
             String.format(ImrDataCiteConstants.VIEW_URL, stationName),
             String.format(ImrDataCiteConstants.VIEW_NAME, stationName),

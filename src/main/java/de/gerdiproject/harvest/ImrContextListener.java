@@ -30,7 +30,7 @@ import de.gerdiproject.harvest.etls.ImrStationETL;
  * @author Arnd Plumhoff
  */
 @WebListener
-public class IMRContextListener extends ContextListener
+public class ImrContextListener extends ContextListener
 {
     @Override
     protected List<? extends AbstractETL<?, ?>> createETLs()
