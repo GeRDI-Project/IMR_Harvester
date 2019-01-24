@@ -24,7 +24,7 @@ import java.util.List;
 import com.google.gson.reflect.TypeToken;
 
 import de.gerdiproject.harvest.etls.AbstractETL;
-import de.gerdiproject.harvest.imr.constants.ImrConstants;
+import de.gerdiproject.harvest.imr.constants.ImrStationConstants;
 import de.gerdiproject.harvest.imr.json.StationProperties;
 import de.gerdiproject.harvest.utils.data.HttpRequester;
 import de.gerdiproject.json.geo.Feature;
@@ -53,7 +53,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 
         final Type responseType = new TypeToken<FeatureCollection<StationProperties>>() {} .getType();
         final FeatureCollection<StationProperties> stationsResponse = httpRequester.getObjectFromUrl(
-                                                                          ImrConstants.STATION_POSITIONS_URL,
+                                                                          ImrStationConstants.POSITIONS_URL,
                                                                           responseType);
         this.size = stationsResponse.getFeatures().size();
         this.featureIterator = stationsResponse.getFeatures().iterator();
@@ -131,7 +131,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
         private List<Integer> getMeasurementYears(String stationId)
         {
             final Type intListType = new TypeToken<List<Integer>>() {} .getType();
-            final String yearsUrl = String.format(ImrConstants.STATION_YEARS_URL, stationId);
+            final String yearsUrl = String.format(ImrStationConstants.YEARS_URL, stationId);
 
             return httpRequester.getObjectFromUrl(yearsUrl, intListType);
         }
@@ -146,7 +146,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
          */
         private String getDescription(String stationId)
         {
-            final String descriptionUrl = String.format(ImrConstants.STATION_DESCRIPTION_URL, stationId);
+            final String descriptionUrl = String.format(ImrStationConstants.DESCRIPTION_URL, stationId);
             return httpRequester.getHtmlFromUrl(descriptionUrl).text();
         }
 
@@ -170,7 +170,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
                 for (int year : measurementYears) {
 
                     // get measurement dates of the specified year
-                    final String datesUrl = String.format(ImrConstants.STATION_DATES_IN_YEAR_URL, stationId, year);
+                    final String datesUrl = String.format(ImrStationConstants.DATES_IN_YEAR_URL, stationId, year);
                     final List<String> datesOfYear = httpRequester.getObjectFromUrl(datesUrl, stringListType);
 
                     if (datesOfYear != null)

@@ -1,5 +1,5 @@
 /**
- * Copyright © 2018 Arnd Plumhoff (http://www.gerdi-project.de)
+ * Copyright © 2019 Robin Weiss (http://www.gerdi-project.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,26 @@
  */
 package de.gerdiproject.harvest.etls;
 
-import de.gerdiproject.harvest.etls.extractors.ImrStationExtractor;
-import de.gerdiproject.harvest.etls.extractors.ImrStationVO;
-import de.gerdiproject.harvest.etls.transformers.ImrStationTransformer;
+import de.gerdiproject.harvest.etls.extractors.ImrSjomilExtractor;
+import de.gerdiproject.harvest.etls.extractors.ImrSjomilVO;
+import de.gerdiproject.harvest.etls.transformers.ImrSjomilTransformer;
 import de.gerdiproject.json.datacite.DataCiteJson;
 
 
 /**
- * An ETL for harvesting IMR hydrographic stations.<br>
- * See: http://www.imr.no/forskning/forskningsdata/stasjoner/index.html
+ * An ETL for harvesting the IMR Sea and Environment database.<br>
+ * See: http://www.imr.no/sjomil/index.html
  *
- * @author Arnd Plumhoff
+ * @author Robin Weiss
  */
-public class ImrStationETL extends StaticIteratorETL<ImrStationVO, DataCiteJson>
+public class ImrSjomilETL extends StaticIteratorETL<ImrSjomilVO, DataCiteJson>
 {
     /**
      * Default Constructor that initializes the
      * extractor and transformer.
      */
-    public ImrStationETL()
+    public ImrSjomilETL()
     {
-        super(new ImrStationExtractor(), new ImrStationTransformer());
+        super(new ImrSjomilExtractor(), new ImrSjomilTransformer());
     }
 }

@@ -45,7 +45,7 @@ public class ImrDataCiteConstants
 {
 
     // RESOURCE TYPE
-    public static final ResourceType STATION_RESOURCE_TYPE = createResourceType();
+    public static final ResourceType RESOURCE_TYPE = createResourceType();
 
     // CREATOR
     public static final List<Creator> CREATORS = createCreators();
@@ -59,13 +59,13 @@ public class ImrDataCiteConstants
     // TITLES
     public static final String STATION_TITLE_ENGLISH = "Norwegian Hydrographic Station: %s";
     public static final String STATION_TITLE_NORWEGIAN = "Stasjon: %s";
+    public static final String SEA_AND_ENVIRONMENT_TITLE = "%s - %s";
 
 
     // WEB LINKS
-    public static final String VIEW_URL = "http://www.imr.no/forskning/forskningsdata/stasjoner/view?station=%s";
-    public static final String VIEW_NAME = "View %s";
     public static final WebLink LOGO_WEB_LINK = createLogoWebLink();
     public static final WebLink STATION_OVERVIEW_LINK = createStationOverviewWebLink();
+    public static final WebLink SJOMIL_OVERVIEW_LINK = createSeaAndEnvironmentOverviewWebLink();
 
 
     // DATES
@@ -87,7 +87,7 @@ public class ImrDataCiteConstants
     public static final List<Subject> STATION_SUBJECTS = createStationSubjects();
 
     // RIGHTS
-    public static final List<Rights> STATION_RIGHTS = createRightsList();
+    public static final List<Rights> RIGHTS = createRightsList();
 
     // RESEARCH DATA
     public static final String STATION_SALINITY_ON_DATE_TITLE = "Salinity on %s";
@@ -96,6 +96,7 @@ public class ImrDataCiteConstants
     public static final String STATION_TEMPERATURE_ON_DATE_TITLE = "Temperature on %s";
     public static final String STATION_TEMPERATURE_OF_YEAR_TITLE = "Temperature in Year %d";
     public static final String STATION_MEAN_TEMPERATURE_OF_YEAR_TITLE = "Mean Temperature in Year %d";
+    public static final String SEA_AND_ENVIRONMENT_DATASET_TITLE = "Complete Dataset";
 
 
 
@@ -155,6 +156,7 @@ public class ImrDataCiteConstants
         return logoLink;
     }
 
+
     /**
      * Initializes a WebLink that leads to an overview of all stations.
      *
@@ -165,6 +167,20 @@ public class ImrDataCiteConstants
         return new WebLink(
                    "http://www.imr.no/forskning/forskningsdata/stasjoner/",
                    "Faste hydrografiske stasjoner",
+                   WebLinkType.Related);
+    }
+
+
+    /**
+     * Initializes a WebLink that leads to the index page of SJØMIL.
+     *
+     * @return a link to SJØMIL
+     */
+    private static WebLink createSeaAndEnvironmentOverviewWebLink()
+    {
+        return new WebLink(
+                   "http://www.imr.no/sjomil/index.html",
+                   "SJØMIL - Database for sjø og miljø",
                    WebLinkType.Related);
     }
 

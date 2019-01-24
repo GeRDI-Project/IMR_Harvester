@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebListener;
 
 import de.gerdiproject.harvest.application.ContextListener;
 import de.gerdiproject.harvest.etls.AbstractETL;
+import de.gerdiproject.harvest.etls.ImrSjomilETL;
 import de.gerdiproject.harvest.etls.ImrStationETL;
 
 /**
@@ -35,6 +36,9 @@ public class ImrContextListener extends ContextListener
     @Override
     protected List<? extends AbstractETL<?, ?>> createETLs()
     {
-        return Arrays.asList(new ImrStationETL());
+        return Arrays.asList(
+                   new ImrStationETL(),
+                   new ImrSjomilETL()
+               );
     }
 }

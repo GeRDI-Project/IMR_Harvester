@@ -21,8 +21,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.gerdiproject.harvest.etls.extractors.ImrStationVO;
-import de.gerdiproject.harvest.imr.constants.ImrConstants;
 import de.gerdiproject.harvest.imr.constants.ImrDataCiteConstants;
+import de.gerdiproject.harvest.imr.constants.ImrStationConstants;
 import de.gerdiproject.json.datacite.DataCiteJson;
 import de.gerdiproject.json.datacite.Date;
 import de.gerdiproject.json.datacite.DateRange;
@@ -54,14 +54,14 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         document.setRepositoryIdentifier(ImrDataCiteConstants.REPOSITORY_ID);
         document.addResearchDisciplines(ImrDataCiteConstants.DISCIPLINES);
         document.setLanguage(ImrDataCiteConstants.LANGUAGE_NORWEGIAN);
-        document.setResourceType(ImrDataCiteConstants.STATION_RESOURCE_TYPE);
+        document.setResourceType(ImrDataCiteConstants.RESOURCE_TYPE);
         document.addCreators(ImrDataCiteConstants.CREATORS);
         document.addResearchDisciplines(ImrDataCiteConstants.DISCIPLINES);
-        document.addRights(ImrDataCiteConstants.STATION_RIGHTS);
+        document.addRights(ImrDataCiteConstants.RIGHTS);
         document.addSubjects(ImrDataCiteConstants.STATION_SUBJECTS);
         document.addFormats(ImrDataCiteConstants.FORMATS);
-        document.setPublicationYear(getPublicationYear(vo));
 
+        document.setPublicationYear(getPublicationYear(vo));
         document.addTitles(getTitles(vo));
         document.addDescriptions(getDescriptions(vo));
         document.addWebLinks(getWebLinks(vo));
@@ -147,25 +147,25 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         for (int measurementYear : vo.getMeasurementYears()) {
             // add salinity measurement
             researchDataList.add(new ResearchData(
-                                     String.format(ImrConstants.STATION_SALINITY_OF_YEAR_URL, stationId, measurementYear),
+                                     String.format(ImrStationConstants.SALINITY_OF_YEAR_URL, stationId, measurementYear),
                                      String.format(ImrDataCiteConstants.STATION_SALINITY_OF_YEAR_TITLE, measurementYear),
                                      ImrDataCiteConstants.JSON_FORMAT));
 
             // add mean salinity measurement
             researchDataList.add(new ResearchData(
-                                     String.format(ImrConstants.STATION_MEAN_SALINITY_OF_YEAR_URL, stationId, measurementYear),
+                                     String.format(ImrStationConstants.MEAN_SALINITY_OF_YEAR_URL, stationId, measurementYear),
                                      String.format(ImrDataCiteConstants.STATION_MEAN_SALINITY_OF_YEAR_TITLE, measurementYear),
                                      ImrDataCiteConstants.JSON_FORMAT));
 
             // add temperature measurement
             researchDataList.add(new ResearchData(
-                                     String.format(ImrConstants.STATION_TEMPERATURE_OF_YEAR_URL, stationId, measurementYear),
+                                     String.format(ImrStationConstants.TEMPERATURE_OF_YEAR_URL, stationId, measurementYear),
                                      String.format(ImrDataCiteConstants.STATION_TEMPERATURE_OF_YEAR_TITLE, measurementYear),
                                      ImrDataCiteConstants.JSON_FORMAT));
 
             // add mean temperature measurement
             researchDataList.add(new ResearchData(
-                                     String.format(ImrConstants.STATION_MEAN_TEMPERATURE_OF_YEAR_URL, stationId, measurementYear),
+                                     String.format(ImrStationConstants.MEAN_TEMPERATURE_OF_YEAR_URL, stationId, measurementYear),
                                      String.format(ImrDataCiteConstants.STATION_MEAN_TEMPERATURE_OF_YEAR_TITLE, measurementYear),
                                      ImrDataCiteConstants.JSON_FORMAT));
         }
@@ -174,13 +174,13 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         for (String measurementDate : vo.getMeasurementDates()) {
             // add salinity measurement
             researchDataList.add(new ResearchData(
-                                     String.format(ImrConstants.STATION_SALINITY_ON_DATE_URL, stationId, measurementDate),
+                                     String.format(ImrStationConstants.SALINITY_ON_DATE_URL, stationId, measurementDate),
                                      String.format(ImrDataCiteConstants.STATION_SALINITY_ON_DATE_TITLE, measurementDate),
                                      ImrDataCiteConstants.JSON_FORMAT));
 
             // add temperature measurement
             researchDataList.add(new ResearchData(
-                                     String.format(ImrConstants.STATION_TEMPERATURE_ON_DATE_URL, stationId, measurementDate),
+                                     String.format(ImrStationConstants.TEMPERATURE_ON_DATE_URL, stationId, measurementDate),
                                      String.format(ImrDataCiteConstants.STATION_TEMPERATURE_ON_DATE_TITLE, measurementDate),
                                      ImrDataCiteConstants.JSON_FORMAT));
         }
@@ -282,8 +282,8 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         // add View link
         final String stationName = vo.getFeature().getProperties().getName().trim();
         final WebLink viewLink = new WebLink(
-            String.format(ImrDataCiteConstants.VIEW_URL, stationName),
-            String.format(ImrDataCiteConstants.VIEW_NAME, stationName),
+            String.format(ImrStationConstants.VIEW_URL, stationName),
+            String.format(ImrStationConstants.VIEW_NAME, stationName),
             WebLinkType.ViewURL);
         webLinks.add(viewLink);
 
