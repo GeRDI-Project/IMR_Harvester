@@ -1,5 +1,5 @@
 /**
- * Copyright © 2018 Arnd Plumhoff (http://www.gerdi-project.de)
+ * Copyright © 2019 Robin Weiss (http://www.gerdi-project.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import de.gerdiproject.json.datacite.DataCiteJson;
  * An ETL for harvesting IMR hydrographic stations.<br>
  * See: http://www.imr.no/forskning/forskningsdata/stasjoner/index.html
  *
- * @author Arnd Plumhoff
+ * @author Robin Weiss
  */
 public class ImrStationETL extends StaticIteratorETL<ImrStationVO, DataCiteJson>
 {

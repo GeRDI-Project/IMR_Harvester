@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2018 Robin Weiss (http://www.gerdi-project.de/)
+ *  Copyright © 2019 Robin Weiss (http://www.gerdi-project.de/)
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@
  *  under the License.
  */
 /**
- *
+ * This package contains {@link de.gerdiproject.harvest.etls.transformers.ITransformer}
+ * implementations for transforming IMR data to documents.
  *
  * @author Robin Weiss
  */
