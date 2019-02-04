@@ -138,7 +138,7 @@ public class ImrDataCiteConstants
                                                 new Subject("dybde", LANGUAGE_NORWEGIAN),
                                                 new Subject("depth", LANGUAGE_ENGLISH),
                                                 new Subject("år", LANGUAGE_NORWEGIAN),
-                                                new Subject("years", LANGUAGE_ENGLISH)
+                                                new Subject("year", LANGUAGE_ENGLISH)
                                             ));
     }
 
@@ -186,7 +186,7 @@ public class ImrDataCiteConstants
 
 
     /**
-     * Initializes a Creator dummy for all IMR documents.
+     * Initializes an organisational Creator for all IMR documents.
      *
      * @return a Creator that has "IMR" as name
      */

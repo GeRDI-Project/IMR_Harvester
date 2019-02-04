@@ -16,12 +16,18 @@
  */
 package de.gerdiproject.harvest.imr.json;
 
+import de.gerdiproject.json.geo.Feature;
+import de.gerdiproject.json.geo.FeatureCollection;
 import lombok.Data;
 
 /**
- * This class represents a JSON object that is part of the response to a Imr getpositions request.
+ * This class represents properties of a {@linkplain Feature} object
+ * that is part of the JSON response to an IMR getpositions-request.
+ *
  * <br>e.g. see http://www.imr.no/forskning/forskningsdata/stasjoner/view/getpositions
  *
+ * @see Feature
+ * @see FeatureCollection
  * @author Arnd Plumhoff
  */
 @Data

@@ -67,7 +67,8 @@ public class ImrSjomilExtractor extends AbstractIteratorExtractor<ImrSjomilVO>
 
     /**
      * This class represents an {@linkplain Iterator} that iterates through
-     * {@linkplain ImrSjomilVO}s used for harvesting IMR SJØMIL datasets.
+     * {@linkplain ImrSjomilVO}s used for harvesting IMR SJØMIL datasets by
+     * trying out all IDs in a range of 0000 to 9999.
      *
      * @author Robin Weiss
      */
