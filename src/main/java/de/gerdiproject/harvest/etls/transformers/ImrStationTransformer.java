@@ -59,7 +59,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         document.addResearchDisciplines(ImrDataCiteConstants.DISCIPLINES);
         document.addRights(ImrDataCiteConstants.RIGHTS);
         document.addSubjects(ImrDataCiteConstants.STATION_SUBJECTS);
-        document.addFormats(ImrDataCiteConstants.FORMATS);
+        document.addFormats(ImrDataCiteConstants.STATION_FORMATS);
 
         document.addTitles(getTitles(vo));
         document.addDescriptions(getDescriptions(vo));
@@ -112,6 +112,12 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
     {
         final String stationId = vo.getFeature().getProperties().getId();
         final List<ResearchData> researchDataList = new LinkedList<>();
+
+        // add a link to all measured data
+        researchDataList.add(new ResearchData(
+                                 String.format(ImrStationConstants.DOWNLOAD_MEASUREMENTS_URL, stationId, new java.util.Date()),
+                                 ImrDataCiteConstants.STATION_DATASET_TITLE,
+                                 ImrDataCiteConstants.TXT_FORMAT));
 
         // add measurements of years
         for (int measurementYear : vo.getMeasurementYears()) {
@@ -243,14 +249,11 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
     {
         final List<WebLink> webLinks = new LinkedList<>();
 
-        // add logo link
+        // add static links
         webLinks.add(ImrDataCiteConstants.LOGO_WEB_LINK);
-
-        // add stations overview link
         webLinks.add(ImrDataCiteConstants.STATION_OVERVIEW_LINK);
-
-        // add map image link
         webLinks.add(ImrDataCiteConstants.STATION_MAP_IMAGE_LINK);
+        webLinks.add(ImrDataCiteConstants.STATION_DOWNLOAD_LINK);
 
         // add View link
         final String stationName = vo.getFeature().getProperties().getName().trim();

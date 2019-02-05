@@ -66,6 +66,7 @@ public class ImrDataCiteConstants
     public static final WebLink LOGO_WEB_LINK = createLogoWebLink();
     public static final WebLink STATION_OVERVIEW_LINK = createStationOverviewWebLink();
     public static final WebLink STATION_MAP_IMAGE_LINK = createStationMapImageWebLink();
+    public static final WebLink STATION_DOWNLOAD_LINK = createStationDownloadWebLink();
     public static final WebLink SJOMIL_OVERVIEW_LINK = createSeaAndEnvironmentOverviewWebLink();
 
 
@@ -82,7 +83,9 @@ public class ImrDataCiteConstants
 
     // FORMATS
     public static final String JSON_FORMAT = "JSON";
-    public static final List<String> FORMATS = Collections.unmodifiableList(Arrays.asList(JSON_FORMAT));
+    public static final String TXT_FORMAT = "TXT";
+    public static final List<String> STATION_FORMATS = Collections.unmodifiableList(Arrays.asList(JSON_FORMAT, TXT_FORMAT));
+    public static final List<String> SJOMIL_FORMATS = Collections.unmodifiableList(Arrays.asList(TXT_FORMAT));
 
     // SUBJECTS
     public static final List<Subject> STATION_SUBJECTS = createStationSubjects();
@@ -97,6 +100,7 @@ public class ImrDataCiteConstants
     public static final String STATION_TEMPERATURE_ON_DATE_TITLE = "Temperature on %s";
     public static final String STATION_TEMPERATURE_OF_YEAR_TITLE = "Temperature in Year %d";
     public static final String STATION_MEAN_TEMPERATURE_OF_YEAR_TITLE = "Mean Temperature in Year %d";
+    public static final String STATION_DATASET_TITLE = "Complete Dataset";
     public static final String SEA_AND_ENVIRONMENT_DATASET_TITLE = "Complete Dataset";
 
 
@@ -185,6 +189,7 @@ public class ImrDataCiteConstants
                    WebLinkType.Related);
     }
 
+
     /**
      * Initializes a {@linkplain WebLink} that leads to a station overview map image.
      *
@@ -199,6 +204,18 @@ public class ImrDataCiteConstants
     }
 
 
+    /**
+     * Initializes a {@linkplain WebLink} that leads to the station download selector.
+     *
+     * @return a {@linkplain WebLink} that leads to the station download selector
+     */
+    private static WebLink createStationDownloadWebLink()
+    {
+        return new WebLink(
+                   "http://www.imr.no/forskning/forskningsdata/stasjoner/view/initdownload",
+                   "Last ned data",
+                   WebLinkType.Related);
+    }
 
 
     /**

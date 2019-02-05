@@ -43,4 +43,11 @@ public class ImrStationConstants
     public static final String TEMPERATURE_ON_DATE_URL = PREFIX + "/getdata/%s/temperature/%s";
     public static final String TEMPERATURE_OF_YEAR_URL = PREFIX + "/getyeardata/%s/temperature/%d/1";
     public static final String MEAN_TEMPERATURE_OF_YEAR_URL = PREFIX + "/getmeanforyear/%s/1/temperature/%d";
+
+    public static final String DOWNLOAD_MEASUREMENTS_URL = PREFIX
+                                                           + "/downloaddata?fromdate=01.01.1930"
+                                                           + "&todate=%2$td.%2$tm.%2$tY"
+                                                           + "&stations=%1$s"
+                                                           + "&depths=1,5,10,20,30,50,75,100,125,135,150,200,250,290,300"
+                                                           + "&month_mean=month";
 }

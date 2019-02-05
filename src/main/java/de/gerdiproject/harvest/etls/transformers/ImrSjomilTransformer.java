@@ -16,7 +16,6 @@
  */
 package de.gerdiproject.harvest.etls.transformers;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,7 +40,6 @@ import de.gerdiproject.json.datacite.enums.NameType;
 import de.gerdiproject.json.datacite.enums.RelatedIdentifierType;
 import de.gerdiproject.json.datacite.enums.RelationType;
 import de.gerdiproject.json.datacite.enums.TitleType;
-import de.gerdiproject.json.datacite.extension.generic.ResearchData;
 import de.gerdiproject.json.datacite.extension.generic.WebLink;
 import de.gerdiproject.json.datacite.extension.generic.enums.WebLinkType;
 import de.gerdiproject.json.datacite.nested.PersonName;
@@ -67,7 +65,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
         document.addCreators(ImrDataCiteConstants.CREATORS);
         document.addResearchDisciplines(ImrDataCiteConstants.DISCIPLINES);
         document.addRights(ImrDataCiteConstants.RIGHTS);
-        document.addFormats(ImrDataCiteConstants.FORMATS);
+        document.addFormats(ImrDataCiteConstants.SJOMIL_FORMATS);
 
         document.addTitles(getTitles(vo));
         document.addContributors(getContributors(vo));
@@ -75,7 +73,6 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
         document.addWebLinks(getWebLinks(vo));
         document.addDates(getDates(vo));
         document.addGeoLocations(getGeoLocations(vo));
-        document.addResearchData(getResearchData(vo));
 
         return document;
     }
@@ -148,26 +145,6 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
                           ImrDataCiteConstants.LANGUAGE_ENGLISH));
 
         return titleList;
-    }
-
-
-    /**
-     * Retrieves a {@linkplain List} of {@linkplain ResearchData} that are related to the
-     * dateset.
-     *
-     * @param vo the value object that contains extracted dataset data
-     *
-     * @return a list of {@linkplain List} of {@linkplain ResearchData}
-     */
-    private List<ResearchData> getResearchData(ImrSjomilVO vo)
-    {
-        final String downloadUrl = String.format(ImrSjomilConstants.DOWNLOAD_URL, vo.getId());
-        final ResearchData dataset = new ResearchData(
-            downloadUrl,
-            ImrDataCiteConstants.SEA_AND_ENVIRONMENT_DATASET_TITLE,
-            ImrDataCiteConstants.JSON_FORMAT);
-
-        return Arrays.asList(dataset);
     }
 
 
