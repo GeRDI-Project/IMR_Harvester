@@ -85,6 +85,9 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
     {
         Integer publicationYear = null;
 
+        // publication year could be the latest or earliest measurement year or in between
+        // until we know, we will not assume it
+        /*
         // retrieve year from earliestDate
         if (vo.getEarliestDate() != null) {
             // retrieve year from date string
@@ -97,6 +100,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
                 publicationYear = null;
             }
         }
+        */
 
         return publicationYear;
     }
@@ -273,11 +277,14 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
     {
         final List<WebLink> webLinks = new LinkedList<>();
 
-        // add Logo link
+        // add logo link
         webLinks.add(ImrDataCiteConstants.LOGO_WEB_LINK);
 
         // add stations overview link
         webLinks.add(ImrDataCiteConstants.STATION_OVERVIEW_LINK);
+
+        // add map image link
+        webLinks.add(ImrDataCiteConstants.STATION_MAP_IMAGE_LINK);
 
         // add View link
         final String stationName = vo.getFeature().getProperties().getName().trim();

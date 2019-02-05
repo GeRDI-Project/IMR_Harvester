@@ -65,6 +65,7 @@ public class ImrDataCiteConstants
     // WEB LINKS
     public static final WebLink LOGO_WEB_LINK = createLogoWebLink();
     public static final WebLink STATION_OVERVIEW_LINK = createStationOverviewWebLink();
+    public static final WebLink STATION_MAP_IMAGE_LINK = createStationMapImageWebLink();
     public static final WebLink SJOMIL_OVERVIEW_LINK = createSeaAndEnvironmentOverviewWebLink();
 
 
@@ -158,9 +159,9 @@ public class ImrDataCiteConstants
 
 
     /**
-     * Initializes a WebLink that leads to an overview of all stations.
+     * Initializes a {@linkplain WebLink} that leads to an overview of all stations.
      *
-     * @return a link to all hydrographic stations
+     * @return a {@linkplain WebLink} to all hydrographic stations
      */
     private static WebLink createStationOverviewWebLink()
     {
@@ -172,9 +173,9 @@ public class ImrDataCiteConstants
 
 
     /**
-     * Initializes a WebLink that leads to the index page of SJØMIL.
+     * Initializes a {@linkplain WebLink} that leads to the index page of SJØMIL.
      *
-     * @return a link to SJØMIL
+     * @return a {@linkplain WebLink} to SJØMIL
      */
     private static WebLink createSeaAndEnvironmentOverviewWebLink()
     {
@@ -183,6 +184,21 @@ public class ImrDataCiteConstants
                    "SJØMIL - Database for sjø og miljø",
                    WebLinkType.Related);
     }
+
+    /**
+     * Initializes a {@linkplain WebLink} that leads to a station overview map image.
+     *
+     * @return a {@linkplain WebLink} to the station map image
+     */
+    private static WebLink createStationMapImageWebLink()
+    {
+        return new WebLink(
+                   "http://www.imr.no/forskning/forskningsdata/stasjoner/images/fastestasjoner.jpg",
+                   "Oversikt over stasjoner",
+                   WebLinkType.ThumbnailURL);
+    }
+
+
 
 
     /**
@@ -204,7 +220,7 @@ public class ImrDataCiteConstants
      */
     private static ResourceType createResourceType()
     {
-        final ResourceType resType = new ResourceType("Measurement Data", ResourceTypeGeneral.Dataset);
+        final ResourceType resType = new ResourceType("time series measurements", ResourceTypeGeneral.Dataset);
         return resType;
     }
 }

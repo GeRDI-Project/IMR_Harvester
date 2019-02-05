@@ -63,6 +63,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
     @Override
     public String getUniqueVersionString()
     {
+        // there is no shared version string that represents the state of IMR stations
         return null;
     }
 

@@ -94,6 +94,9 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
     {
         Integer publicationYear = null;
 
+        // publication year could be the latest or earliest measurement year or in between
+        // until we know more, we will not assume it
+        /*
         final Element earliestDateElem =
             vo.getViewPage().selectFirst(ImrSjomilConstants.SELECT_DATE_ELEMENT);
 
@@ -108,6 +111,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
                 publicationYear = null;
             }
         }
+        */
 
         return publicationYear;
     }

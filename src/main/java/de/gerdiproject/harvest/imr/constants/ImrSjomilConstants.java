@@ -47,5 +47,5 @@ public class ImrSjomilConstants
     public static final String SELECT_DATE_ELEMENT = "select#date1 > option";
 
     // OTHER
-    public static final int SEA_AND_ENVIRONMENT_DOC_COUNT = 10000;
+    public static final int SEA_AND_ENVIRONMENT_DOC_COUNT = 10000; // determined empirically
 }

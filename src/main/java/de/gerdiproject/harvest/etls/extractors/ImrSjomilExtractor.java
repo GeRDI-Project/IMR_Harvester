@@ -47,6 +47,7 @@ public class ImrSjomilExtractor extends AbstractIteratorExtractor<ImrSjomilVO>
     @Override
     public String getUniqueVersionString()
     {
+        // there is no shared version string that represents the state of IMR Sjomil datasets
         return null;
     }
 
