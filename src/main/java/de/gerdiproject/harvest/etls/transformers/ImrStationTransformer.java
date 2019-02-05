@@ -61,7 +61,6 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         document.addSubjects(ImrDataCiteConstants.STATION_SUBJECTS);
         document.addFormats(ImrDataCiteConstants.FORMATS);
 
-        document.setPublicationYear(getPublicationYear(vo));
         document.addTitles(getTitles(vo));
         document.addDescriptions(getDescriptions(vo));
         document.addWebLinks(getWebLinks(vo));
@@ -70,39 +69,6 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         document.addResearchData(getResearchData(vo));
 
         return document;
-    }
-
-
-    /**
-     * Attempts to retrieve the publication year of a station
-     * by choosing the earliest measurement date.
-     *
-     * @param vo the value object that contains extracted station data
-     *
-     * @return the earliest measurement date or null, if it cannot be retrieved
-     */
-    private Integer getPublicationYear(ImrStationVO vo)
-    {
-        Integer publicationYear = null;
-
-        // publication year could be the latest or earliest measurement year or in between
-        // until we know, we will not assume it
-        /*
-        // retrieve year from earliestDate
-        if (vo.getEarliestDate() != null) {
-            // retrieve year from date string
-            final String yearString = vo.getEarliestDate().substring(vo.getEarliestDate().lastIndexOf('.') + 1);
-
-            // convert year to integer
-            try {
-                publicationYear = Integer.parseUnsignedInt(yearString);
-            } catch (NumberFormatException e) {
-                publicationYear = null;
-            }
-        }
-        */
-
-        return publicationYear;
     }
 
 

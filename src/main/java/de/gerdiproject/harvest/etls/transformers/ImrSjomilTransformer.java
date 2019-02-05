@@ -69,7 +69,6 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
         document.addRights(ImrDataCiteConstants.RIGHTS);
         document.addFormats(ImrDataCiteConstants.FORMATS);
 
-        document.setPublicationYear(getPublicationYear(vo));
         document.addTitles(getTitles(vo));
         document.addContributors(getContributors(vo));
         document.addRelatedIdentifiers(getRelatedIdentifiers(vo));
@@ -79,41 +78,6 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
         document.addResearchData(getResearchData(vo));
 
         return document;
-    }
-
-
-    /**
-     * Attempts to retrieve the publication year of a dataset
-     * by retrieving its earliest measurement date.
-     *
-     * @param vo the value object that contains extracted dataset data
-     *
-     * @return the earliest measurement date or null, if it cannot be retrieved
-     */
-    private Integer getPublicationYear(ImrSjomilVO vo)
-    {
-        Integer publicationYear = null;
-
-        // publication year could be the latest or earliest measurement year or in between
-        // until we know more, we will not assume it
-        /*
-        final Element earliestDateElem =
-            vo.getViewPage().selectFirst(ImrSjomilConstants.SELECT_DATE_ELEMENT);
-
-        // retrieve year from the date selection component
-        if (earliestDateElem != null) {
-            final String yearString = earliestDateElem.text().substring(0, earliestDateElem.text().indexOf('-'));
-
-            // convert year to integer
-            try {
-                publicationYear = Integer.parseUnsignedInt(yearString);
-            } catch (NumberFormatException e) {
-                publicationYear = null;
-            }
-        }
-        */
-
-        return publicationYear;
     }
 
 
