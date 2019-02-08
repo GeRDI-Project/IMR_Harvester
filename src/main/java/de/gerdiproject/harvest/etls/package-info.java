@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 /**
- * This package contains utility classes for processing IMR data.
+ * This package contains classes and packages that are related to IMR ETLs.
  *
  * @author Arnd Plumhoff
  */
-package de.gerdiproject.harvest.imr.utils;
+package de.gerdiproject.harvest.etls;

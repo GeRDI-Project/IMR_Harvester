@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /**
- * This package contains static classes of constants concerning
+ * This package contains classes of constants concerning
  * the IMR source data.
  *
  * @author Arnd Plumhoff
