@@ -146,21 +146,6 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
                                      ImrDataCiteConstants.JSON_FORMAT));
         }
 
-        // add measurements on specific dates
-        for (String measurementDate : vo.getMeasurementDates()) {
-            // add salinity measurement
-            researchDataList.add(new ResearchData(
-                                     String.format(ImrStationConstants.SALINITY_ON_DATE_URL, stationId, measurementDate),
-                                     String.format(ImrDataCiteConstants.STATION_SALINITY_ON_DATE_TITLE, measurementDate),
-                                     ImrDataCiteConstants.JSON_FORMAT));
-
-            // add temperature measurement
-            researchDataList.add(new ResearchData(
-                                     String.format(ImrStationConstants.TEMPERATURE_ON_DATE_URL, stationId, measurementDate),
-                                     String.format(ImrDataCiteConstants.STATION_TEMPERATURE_ON_DATE_TITLE, measurementDate),
-                                     ImrDataCiteConstants.JSON_FORMAT));
-        }
-
         return researchDataList;
     }
 

@@ -156,7 +156,7 @@ public class ImrDataCiteConstants
     private static WebLink createLogoWebLink()
     {
         final WebLink logoLink = new WebLink(
-            "https://www.imr.no/hi/resources/layout/HI-logo-farger-norsk.svg/original");
+            "http://www.jerico-ri.eu/wp-content/uploads/2016/02/IMR-logo.jpg");
         logoLink.setType(WebLinkType.ProviderLogoURL);
         return logoLink;
     }
