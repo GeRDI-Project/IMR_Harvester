@@ -15,6 +15,9 @@
  */
 package de.gerdiproject.harvest.etls;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 import de.gerdiproject.harvest.etls.extractors.ImrStationExtractor;
 import de.gerdiproject.harvest.etls.extractors.ImrStationVO;
 import de.gerdiproject.harvest.etls.transformers.ImrStationTransformer;
@@ -36,5 +39,12 @@ public class ImrStationETL extends StaticIteratorETL<ImrStationVO, DataCiteJson>
     public ImrStationETL()
     {
         super(new ImrStationExtractor(), new ImrStationTransformer());
+    }
+
+
+    @Override
+    public Charset getCharset()
+    {
+        return StandardCharsets.ISO_8859_1;
     }
 }
