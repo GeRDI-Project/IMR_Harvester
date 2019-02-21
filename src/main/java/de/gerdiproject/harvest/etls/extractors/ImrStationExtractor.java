@@ -17,10 +17,12 @@
 package de.gerdiproject.harvest.etls.extractors;
 
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import de.gerdiproject.harvest.etls.AbstractETL;
@@ -39,6 +41,7 @@ import de.gerdiproject.json.geo.FeatureCollection;
 public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 {
     private final HttpRequester httpRequester = new HttpRequester();
+    private final HttpRequester descriptionHttpRequester = new HttpRequester(new Gson(), StandardCharsets.ISO_8859_1);
 
     private Iterator<Feature<StationProperties>> featureIterator;
     private int size = -1;
@@ -148,7 +151,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
         private String getDescription(String stationId)
         {
             final String descriptionUrl = String.format(ImrStationConstants.DESCRIPTION_URL, stationId);
-            return httpRequester.getHtmlFromUrl(descriptionUrl).text();
+            return descriptionHttpRequester.getHtmlFromUrl(descriptionUrl).text();
         }
 
 
