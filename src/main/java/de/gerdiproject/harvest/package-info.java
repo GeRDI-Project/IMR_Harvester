@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /**
- * This package contains classes and packages concerning a harvester micro service.
+ * This package contains classes and packages concerning the IMR harvester micro service.
  *
  * @author Arnd Plumhoff
  */

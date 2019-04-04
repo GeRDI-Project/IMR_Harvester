@@ -15,16 +15,30 @@
  */
 package de.gerdiproject.harvest;
 
-import de.gerdiproject.harvest.harvester.IMRHarvester;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.annotation.WebListener;
 
+import de.gerdiproject.harvest.application.ContextListener;
+import de.gerdiproject.harvest.etls.AbstractETL;
+import de.gerdiproject.harvest.etls.ImrSjomilETL;
+import de.gerdiproject.harvest.etls.ImrStationETL;
+
 /**
- * This class initializes the {@linkplain IMRHarvester} and all required classes.
+ * This class initializes the {@linkplain ImrStationETL} and all required classes.
  *
  * @author Arnd Plumhoff
  */
 @WebListener
-public class IMRContextListener extends ContextListener<IMRHarvester>
+public class ImrContextListener extends ContextListener
 {
+    @Override
+    protected List<? extends AbstractETL<?, ?>> createETLs()
+    {
+        return Arrays.asList(
+                   new ImrStationETL(),
+                   new ImrSjomilETL()
+               );
+    }
 }
