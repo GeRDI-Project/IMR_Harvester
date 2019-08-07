@@ -36,7 +36,7 @@ public class ImrSjomilExtractor extends AbstractIteratorExtractor<ImrSjomilVO>
 
 
     @Override
-    public void init(AbstractETL<?, ?> etl)
+    public void init(final AbstractETL<?, ?> etl)
     {
         super.init(etl);
 

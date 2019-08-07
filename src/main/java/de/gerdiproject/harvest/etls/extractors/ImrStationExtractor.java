@@ -48,7 +48,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 
 
     @Override
-    public void init(AbstractETL<?, ?> etl)
+    public void init(final AbstractETL<?, ?> etl)
     {
         super.init(etl);
 
@@ -132,7 +132,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
          *
          * @return a list of all years in which measurements were taken
          */
-        private List<Integer> getMeasurementYears(String stationId)
+        private List<Integer> getMeasurementYears(final String stationId)
         {
             final Type intListType = new TypeToken<List<Integer>>() {} .getType();
             final String yearsUrl = String.format(ImrStationConstants.YEARS_URL, stationId);
@@ -148,7 +148,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
          *
          * @return a Norwegian description String of the station
          */
-        private String getDescription(String stationId)
+        private String getDescription(final String stationId)
         {
             final String descriptionUrl = String.format(ImrStationConstants.DESCRIPTION_URL, stationId);
             return descriptionHttpRequester.getHtmlFromUrl(descriptionUrl).text();
@@ -163,7 +163,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
          *
          * @return all measurement dates as dd.mm.yyyy strings
          */
-        private List<String> getMeasurementDates(String stationId, List<Integer> measurementYears)
+        private List<String> getMeasurementDates(final String stationId, final List<Integer> measurementYears)
         {
             final List<String> measurementDates = new LinkedList<>();
 
@@ -171,7 +171,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
             if (measurementYears != null) {
                 final Type stringListType = new TypeToken<List<String>>() {} .getType();
 
-                for (int year : measurementYears) {
+                for (final int year : measurementYears) {
 
                     // get measurement dates of the specified year
                     final String datesUrl = String.format(ImrStationConstants.DATES_IN_YEAR_URL, stationId, year);

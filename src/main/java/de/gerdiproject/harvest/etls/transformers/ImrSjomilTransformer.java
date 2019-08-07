@@ -54,14 +54,14 @@ import de.gerdiproject.json.datacite.nested.PersonName;
 public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilVO, DataCiteJson>
 {
     @Override
-    public void init(AbstractETL<?, ?> etl)
+    public void init(final AbstractETL<?, ?> etl)
     {
         // nothing to retrieve from the ETL
     }
 
 
     @Override
-    protected DataCiteJson transformElement(ImrSjomilVO vo) throws TransformerException
+    protected DataCiteJson transformElement(final ImrSjomilVO vo) throws TransformerException
     {
         final DataCiteJson document = new DataCiteJson(String.valueOf(vo.getId()));
 
@@ -94,7 +94,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
      *
      * @return a list of {@linkplain List} of {@linkplain Contributor}s
      */
-    private List<Contributor> getContributors(ImrSjomilVO vo)
+    private List<Contributor> getContributors(final ImrSjomilVO vo)
     {
         final List<Contributor> contributorList = new LinkedList<>();
 
@@ -121,7 +121,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
      *
      * @return a list of {@linkplain List} of {@linkplain Title}s
      */
-    private List<Title> getTitles(ImrSjomilVO vo)
+    private List<Title> getTitles(final ImrSjomilVO vo)
     {
         final List<Title> titleList = new LinkedList<>();
 
@@ -164,7 +164,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
      *
      * @return a list of {@linkplain List} of {@linkplain GeoLocation}s
      */
-    private List<GeoLocation> getGeoLocations(ImrSjomilVO vo)
+    private List<GeoLocation> getGeoLocations(final ImrSjomilVO vo)
     {
         final List<GeoLocation> geoLocations = new LinkedList<>();
 
@@ -188,7 +188,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
      *
      * @return a list of {@linkplain List} of {@linkplain AbstractDate}s
      */
-    private List<AbstractDate> getDates(ImrSjomilVO vo)
+    private List<AbstractDate> getDates(final ImrSjomilVO vo)
     {
         final List<AbstractDate> dates = new LinkedList<>();
 
@@ -218,7 +218,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
      *
      * @return a list of {@linkplain List} of {@linkplain RelatedIdentifier}s
      */
-    private List<RelatedIdentifier> getRelatedIdentifiers(ImrSjomilVO vo)
+    private List<RelatedIdentifier> getRelatedIdentifiers(final ImrSjomilVO vo)
     {
         final List<RelatedIdentifier> relatedList = new LinkedList<>();
 
@@ -259,7 +259,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
      *
      * @return a list of {@linkplain List} of {@linkplain WebLink}s
      */
-    private List<WebLink> getWebLinks(ImrSjomilVO vo)
+    private List<WebLink> getWebLinks(final ImrSjomilVO vo)
     {
         final List<WebLink> webLinks = new LinkedList<>();
 
