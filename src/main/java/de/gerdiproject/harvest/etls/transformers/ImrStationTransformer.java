@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.gerdiproject.harvest.etls.AbstractETL;
 import de.gerdiproject.harvest.etls.extractors.ImrStationVO;
 import de.gerdiproject.harvest.imr.constants.ImrDataCiteConstants;
 import de.gerdiproject.harvest.imr.constants.ImrStationConstants;
@@ -45,6 +46,13 @@ import de.gerdiproject.json.datacite.extension.generic.enums.WebLinkType;
  */
 public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStationVO, DataCiteJson>
 {
+    @Override
+    public void init(AbstractETL<?, ?> etl)
+    {
+        // nothing to retrieve from the ETL
+    }
+
+
     @Override
     protected DataCiteJson transformElement(ImrStationVO vo) throws TransformerException
     {
@@ -249,5 +257,12 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         webLinks.add(viewLink);
 
         return webLinks;
+    }
+
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
     }
 }

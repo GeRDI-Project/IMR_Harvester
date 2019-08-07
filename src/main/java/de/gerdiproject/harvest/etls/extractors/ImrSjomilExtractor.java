@@ -103,4 +103,12 @@ public class ImrSjomilExtractor extends AbstractIteratorExtractor<ImrSjomilVO>
             return vo;
         }
     }
+
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
+
+    }
 }

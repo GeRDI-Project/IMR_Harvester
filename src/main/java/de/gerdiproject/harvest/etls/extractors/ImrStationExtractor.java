@@ -185,4 +185,12 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
             return measurementDates;
         }
     }
+
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
+
+    }
 }

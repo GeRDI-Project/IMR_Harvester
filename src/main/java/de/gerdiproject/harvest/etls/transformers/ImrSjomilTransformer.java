@@ -22,6 +22,7 @@ import java.util.List;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import de.gerdiproject.harvest.etls.AbstractETL;
 import de.gerdiproject.harvest.etls.extractors.ImrSjomilVO;
 import de.gerdiproject.harvest.imr.constants.ImrDataCiteConstants;
 import de.gerdiproject.harvest.imr.constants.ImrSjomilConstants;
@@ -52,6 +53,13 @@ import de.gerdiproject.json.datacite.nested.PersonName;
  */
 public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilVO, DataCiteJson>
 {
+    @Override
+    public void init(AbstractETL<?, ?> etl)
+    {
+        // nothing to retrieve from the ETL
+    }
+
+
     @Override
     protected DataCiteJson transformElement(ImrSjomilVO vo) throws TransformerException
     {
@@ -269,5 +277,12 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
         webLinks.add(viewLink);
 
         return webLinks;
+    }
+
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
     }
 }
