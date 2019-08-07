@@ -237,7 +237,6 @@ public class ImrDataCiteConstants
      */
     private static ResourceType createResourceType()
     {
-        final ResourceType resType = new ResourceType("time series measurements", ResourceTypeGeneral.Dataset);
-        return resType;
+        return new ResourceType("time series measurements", ResourceTypeGeneral.Dataset);
     }
 }

@@ -171,14 +171,16 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         final List<GeoLocation> geoLocations;
 
         // check if a valid GeoJson exists
-        if (vo.getFeature().getGeometry() != null) {
+        if (vo.getFeature().getGeometry() == null)
+            geoLocations = null;
+
+        else {
             final String stationName = vo.getFeature().getProperties().getName().trim();
             final GeoLocation stationLocation = new GeoLocation(stationName);
             stationLocation.setPoint(vo.getFeature().getGeometry());
 
             geoLocations = Arrays.asList(stationLocation);
-        } else
-            geoLocations = null;
+        }
 
         return geoLocations;
     }

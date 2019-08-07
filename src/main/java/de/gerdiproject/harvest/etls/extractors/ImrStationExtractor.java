@@ -40,11 +40,11 @@ import de.gerdiproject.json.geo.FeatureCollection;
  */
 public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 {
-    private final HttpRequester httpRequester = new HttpRequester();
-    private final HttpRequester descriptionHttpRequester = new HttpRequester(new Gson(), StandardCharsets.ISO_8859_1);
+    protected final HttpRequester httpRequester = new HttpRequester();
+    protected final HttpRequester descriptionHttpRequester = new HttpRequester(new Gson(), StandardCharsets.ISO_8859_1);
 
-    private Iterator<Feature<StationProperties>> featureIterator;
-    private int size = -1;
+    protected Iterator<Feature<StationProperties>> featureIterator;
+    private int featureCount = -1;
 
 
     @Override
@@ -58,7 +58,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
         final FeatureCollection<StationProperties> stationsResponse = httpRequester.getObjectFromUrl(
                                                                           ImrStationConstants.POSITIONS_URL,
                                                                           responseType);
-        this.size = stationsResponse.getFeatures().size();
+        this.featureCount = stationsResponse.getFeatures().size();
         this.featureIterator = stationsResponse.getFeatures().iterator();
     }
 
@@ -74,7 +74,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
     @Override
     public int size()
     {
-        return size;
+        return featureCount;
     }
 
 
