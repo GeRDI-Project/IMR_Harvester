@@ -32,11 +32,11 @@ import de.gerdiproject.harvest.utils.data.HttpRequester;
  */
 public class ImrSjomilExtractor extends AbstractIteratorExtractor<ImrSjomilVO>
 {
-    private final HttpRequester httpRequester = new HttpRequester();
+    protected final HttpRequester httpRequester = new HttpRequester();
 
 
     @Override
-    public void init(AbstractETL<?, ?> etl)
+    public void init(final AbstractETL<?, ?> etl)
     {
         super.init(etl);
 
@@ -75,7 +75,7 @@ public class ImrSjomilExtractor extends AbstractIteratorExtractor<ImrSjomilVO>
      */
     private class ImrIterator implements Iterator<ImrSjomilVO>
     {
-        int id = 0;
+        int id = 0; // NOPMD the ID starts explicitly with 0
 
         @Override
         public boolean hasNext()
@@ -102,5 +102,13 @@ public class ImrSjomilExtractor extends AbstractIteratorExtractor<ImrSjomilVO>
             id++;
             return vo;
         }
+    }
+
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
+
     }
 }

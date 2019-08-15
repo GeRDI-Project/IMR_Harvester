@@ -40,15 +40,15 @@ import de.gerdiproject.json.geo.FeatureCollection;
  */
 public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 {
-    private final HttpRequester httpRequester = new HttpRequester();
-    private final HttpRequester descriptionHttpRequester = new HttpRequester(new Gson(), StandardCharsets.ISO_8859_1);
+    protected final HttpRequester httpRequester = new HttpRequester();
+    protected final HttpRequester descriptionHttpRequester = new HttpRequester(new Gson(), StandardCharsets.ISO_8859_1);
 
-    private Iterator<Feature<StationProperties>> featureIterator;
-    private int size = -1;
+    protected Iterator<Feature<StationProperties>> featureIterator;
+    private int featureCount = -1;
 
 
     @Override
-    public void init(AbstractETL<?, ?> etl)
+    public void init(final AbstractETL<?, ?> etl)
     {
         super.init(etl);
 
@@ -58,7 +58,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
         final FeatureCollection<StationProperties> stationsResponse = httpRequester.getObjectFromUrl(
                                                                           ImrStationConstants.POSITIONS_URL,
                                                                           responseType);
-        this.size = stationsResponse.getFeatures().size();
+        this.featureCount = stationsResponse.getFeatures().size();
         this.featureIterator = stationsResponse.getFeatures().iterator();
     }
 
@@ -74,7 +74,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
     @Override
     public int size()
     {
-        return size;
+        return featureCount;
     }
 
 
@@ -132,7 +132,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
          *
          * @return a list of all years in which measurements were taken
          */
-        private List<Integer> getMeasurementYears(String stationId)
+        private List<Integer> getMeasurementYears(final String stationId)
         {
             final Type intListType = new TypeToken<List<Integer>>() {} .getType();
             final String yearsUrl = String.format(ImrStationConstants.YEARS_URL, stationId);
@@ -148,7 +148,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
          *
          * @return a Norwegian description String of the station
          */
-        private String getDescription(String stationId)
+        private String getDescription(final String stationId)
         {
             final String descriptionUrl = String.format(ImrStationConstants.DESCRIPTION_URL, stationId);
             return descriptionHttpRequester.getHtmlFromUrl(descriptionUrl).text();
@@ -163,7 +163,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
          *
          * @return all measurement dates as dd.mm.yyyy strings
          */
-        private List<String> getMeasurementDates(String stationId, List<Integer> measurementYears)
+        private List<String> getMeasurementDates(final String stationId, final List<Integer> measurementYears)
         {
             final List<String> measurementDates = new LinkedList<>();
 
@@ -171,7 +171,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
             if (measurementYears != null) {
                 final Type stringListType = new TypeToken<List<String>>() {} .getType();
 
-                for (int year : measurementYears) {
+                for (final int year : measurementYears) {
 
                     // get measurement dates of the specified year
                     final String datesUrl = String.format(ImrStationConstants.DATES_IN_YEAR_URL, stationId, year);
@@ -184,5 +184,13 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 
             return measurementDates;
         }
+    }
+
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
+
     }
 }

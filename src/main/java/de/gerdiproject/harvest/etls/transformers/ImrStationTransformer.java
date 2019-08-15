@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.gerdiproject.harvest.etls.AbstractETL;
 import de.gerdiproject.harvest.etls.extractors.ImrStationVO;
 import de.gerdiproject.harvest.imr.constants.ImrDataCiteConstants;
 import de.gerdiproject.harvest.imr.constants.ImrStationConstants;
@@ -46,7 +47,14 @@ import de.gerdiproject.json.datacite.extension.generic.enums.WebLinkType;
 public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStationVO, DataCiteJson>
 {
     @Override
-    protected DataCiteJson transformElement(ImrStationVO vo) throws TransformerException
+    public void init(final AbstractETL<?, ?> etl)
+    {
+        // nothing to retrieve from the ETL
+    }
+
+
+    @Override
+    protected DataCiteJson transformElement(final ImrStationVO vo) throws TransformerException
     {
         final DataCiteJson document = new DataCiteJson(vo.getFeature().getProperties().getId());
 
@@ -80,7 +88,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      *
      * @return a list of {@linkplain List} of {@linkplain Title}s
      */
-    private List<Title> getTitles(ImrStationVO vo)
+    private List<Title> getTitles(final ImrStationVO vo)
     {
         final String stationName = vo.getFeature().getProperties().getName().trim();
 
@@ -108,7 +116,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      *
      * @return a list of {@linkplain List} of {@linkplain ResearchData}
      */
-    private List<ResearchData> getResearchData(ImrStationVO vo)
+    private List<ResearchData> getResearchData(final ImrStationVO vo)
     {
         final String stationId = vo.getFeature().getProperties().getId();
         final List<ResearchData> researchDataList = new LinkedList<>();
@@ -120,7 +128,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
                                  ImrDataCiteConstants.TXT_FORMAT));
 
         // add measurements of years
-        for (int measurementYear : vo.getMeasurementYears()) {
+        for (final int measurementYear : vo.getMeasurementYears()) {
             // add salinity measurement
             researchDataList.add(new ResearchData(
                                      String.format(ImrStationConstants.SALINITY_OF_YEAR_URL, stationId, measurementYear),
@@ -158,19 +166,21 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      *
      * @return a list of {@linkplain List} of {@linkplain GeoLocation}s
      */
-    private List<GeoLocation> getGeoLocations(ImrStationVO vo)
+    private List<GeoLocation> getGeoLocations(final ImrStationVO vo)
     {
         final List<GeoLocation> geoLocations;
 
         // check if a valid GeoJson exists
-        if (vo.getFeature().getGeometry() != null) {
+        if (vo.getFeature().getGeometry() == null)
+            geoLocations = null;
+
+        else {
             final String stationName = vo.getFeature().getProperties().getName().trim();
             final GeoLocation stationLocation = new GeoLocation(stationName);
             stationLocation.setPoint(vo.getFeature().getGeometry());
 
             geoLocations = Arrays.asList(stationLocation);
-        } else
-            geoLocations = null;
+        }
 
         return geoLocations;
     }
@@ -184,7 +194,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      *
      * @return a list of {@linkplain List} of {@linkplain AbstractDate}s
      */
-    private List<AbstractDate> getDates(ImrStationVO vo)
+    private List<AbstractDate> getDates(final ImrStationVO vo)
     {
         final List<AbstractDate> dates = new LinkedList<>();
 
@@ -209,7 +219,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      *
      * @return a list of {@linkplain List} of {@linkplain Description}s
      */
-    private List<Description> getDescriptions(ImrStationVO vo)
+    private List<Description> getDescriptions(final ImrStationVO vo)
     {
 
         // get Norwegian description from VO
@@ -230,7 +240,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
      *
      * @return a list of {@linkplain List} of {@linkplain WebLink}s
      */
-    private List<WebLink> getWebLinks(ImrStationVO vo)
+    private List<WebLink> getWebLinks(final ImrStationVO vo)
     {
         final List<WebLink> webLinks = new LinkedList<>();
 
@@ -249,5 +259,12 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         webLinks.add(viewLink);
 
         return webLinks;
+    }
+
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
     }
 }
