@@ -20,6 +20,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.vividsolutions.jts.geom.Point;
+
 import de.gerdiproject.harvest.etls.AbstractETL;
 import de.gerdiproject.harvest.etls.extractors.ImrStationVO;
 import de.gerdiproject.harvest.imr.constants.ImrDataCiteConstants;
@@ -177,7 +179,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
         else {
             final String stationName = vo.getFeature().getProperties().getName().trim();
             final GeoLocation stationLocation = new GeoLocation(stationName);
-            stationLocation.setPoint(vo.getFeature().getGeometry());
+            stationLocation.setPoint((Point)vo.getFeature().getGeometry());
 
             geoLocations = Arrays.asList(stationLocation);
         }
