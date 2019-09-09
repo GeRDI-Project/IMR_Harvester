@@ -48,14 +48,14 @@ public class ImrDataCiteConstants
     // RESOURCE TYPE
     public static final ResourceType RESOURCE_TYPE = createResourceType();
 
-    // CREATOR
-    public static final List<Creator> CREATORS = createCreators();
-
     // SOURCE
     public static final Publisher PROVIDER = new Publisher("Havforskningsinstituttet - Institute for Marine Research (IMR)");
     public static final String PROVIDER_URI = "https://www.imr.no/en";
     public static final String REPOSITORY_ID = "IMR";
     public static final List<AbstractResearch> DISCIPLINES = createResearchDisciplines();
+    
+    // CREATOR
+    public static final List<Creator> CREATORS = createCreators();
 
     // TITLES
     public static final String STATION_TITLE_ENGLISH = "Norwegian Hydrographic Station: %s";
