@@ -31,6 +31,7 @@ import de.gerdiproject.json.datacite.extension.generic.WebLink;
 import de.gerdiproject.json.datacite.extension.generic.constants.ResearchDisciplineConstants;
 import de.gerdiproject.json.datacite.extension.generic.enums.WebLinkType;
 import de.gerdiproject.json.datacite.nested.PersonName;
+import de.gerdiproject.json.datacite.nested.Publisher;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -47,14 +48,14 @@ public class ImrDataCiteConstants
     // RESOURCE TYPE
     public static final ResourceType RESOURCE_TYPE = createResourceType();
 
-    // CREATOR
-    public static final List<Creator> CREATORS = createCreators();
-
     // SOURCE
-    public static final String PROVIDER = "Havforskningsinstituttet - Institute for Marine Research (IMR)";
+    public static final Publisher PROVIDER = new Publisher("Havforskningsinstituttet - Institute for Marine Research (IMR)");
     public static final String PROVIDER_URI = "https://www.imr.no/en";
     public static final String REPOSITORY_ID = "IMR";
     public static final List<AbstractResearch> DISCIPLINES = createResearchDisciplines();
+
+    // CREATOR
+    public static final List<Creator> CREATORS = createCreators();
 
     // TITLES
     public static final String STATION_TITLE_ENGLISH = "Norwegian Hydrographic Station: %s";
@@ -117,13 +118,13 @@ public class ImrDataCiteConstants
     {
         final Rights rightsEnglish = new Rights(
             "IMR Data Policy",
-            LANGUAGE_ENGLISH,
-            "https://www.imr.no/filarkiv/2016/09/hi-datapolicy-revised2016-final-eng.pdf/en");
+            LANGUAGE_ENGLISH);
+        rightsEnglish.setUri("https://www.imr.no/filarkiv/2016/09/hi-datapolicy-revised2016-final-eng.pdf/en");
 
         final Rights rightsNorwegian = new Rights(
             "Datapolitikk for Havforskningsinstituttet",
-            LANGUAGE_NORWEGIAN,
-            "http://www.imr.no/filarkiv/2013/03/datapolitikk_nmd.pdf/nb-no");
+            LANGUAGE_NORWEGIAN);
+        rightsNorwegian.setUri("http://www.imr.no/filarkiv/2013/03/datapolitikk_nmd.pdf/nb-no");
 
         return Collections.unmodifiableList(Arrays.asList(
                                                 rightsEnglish,
@@ -225,7 +226,7 @@ public class ImrDataCiteConstants
      */
     private static List<Creator> createCreators()
     {
-        final Creator creator = new Creator(new PersonName(PROVIDER, NameType.Organisational));
+        final Creator creator = new Creator(new PersonName(PROVIDER.getValue(), NameType.Organisational));
         return Collections.unmodifiableList(Arrays.asList(creator));
     }
 
