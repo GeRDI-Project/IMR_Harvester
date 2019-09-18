@@ -53,7 +53,7 @@ public class ImrDataCiteConstants
     public static final String PROVIDER_URI = "https://www.imr.no/en";
     public static final String REPOSITORY_ID = "IMR";
     public static final List<AbstractResearch> DISCIPLINES = createResearchDisciplines();
-    
+
     // CREATOR
     public static final List<Creator> CREATORS = createCreators();
 
