@@ -1,0 +1,101 @@
+{
+	"creators" : [
+		{
+			"creatorName" : {
+				"value" : "Havforskningsinstituttet - Institute for Marine Research (IMR)",
+				"nameType" : "Organisational"
+			}
+		}
+	],
+	"titles" : [
+		{
+			"value" : "Mocked Main Title",
+			"lang" : "en"
+		},
+		{
+			"value" : "Mocked Parent - Mocked Dataset Name",
+			"titleType" : "Other",
+			"lang" : "en"
+		}
+	],
+	"publisher" : {
+		"value" : "Havforskningsinstituttet - Institute for Marine Research (IMR)"
+	},
+	"resourceType" : {
+		"value" : "time series measurements",
+		"resourceTypeGeneral" : "Dataset"
+	},
+	"contributors" : [
+		{
+			"contributorName" : {
+				"value" : "Mockbert Mockensen",
+				"nameType" : "Personal"
+			},
+			"contributorType" : "Researcher"
+		}
+	],
+	"dates" : [
+		{
+			"value" : "1337-01-01T00:00:00Z/3000-01-01T00:00:00Z",
+			"dateType" : "Collected"
+		}
+	],
+	"language" : "en",
+	"relatedIdentifiers" : [
+		{
+			"value" : "http://www.mo.ck/reference.html",
+			"relatedIdentifierType" : "URL",
+			"relationType" : "References"
+		},
+		{
+			"value" : "http://www.mo.ck/description.pdf",
+			"relatedIdentifierType" : "URL",
+			"relationType" : "IsDescribedBy"
+		}
+	],
+	"formats" : [
+		"TXT"
+	],
+	"rightsList" : [
+		{
+			"value" : "IMR Data Policy",
+			"lang" : "en",
+			"rightsURI" : "https://www.imr.no/filarkiv/2016/09/hi-datapolicy-revised2016-final-eng.pdf/en"
+		},
+		{
+			"value" : "Datapolitikk for Havforskningsinstituttet",
+			"lang" : "no",
+			"rightsURI" : "http://www.imr.no/filarkiv/2013/03/datapolitikk_nmd.pdf/nb-no"
+		}
+	],
+	"geoLocations" : [
+		{
+			"geoLocationPlace" : "Mocked Area Name"
+		}
+	],
+	"repositoryIdentifier" : "IMR",
+	"webLinks" : [
+		{
+			"webLinkURI" : "http://www.imr.no/sjomil/metadata.html?id\u003d0\u0026storleik\u003dstor",
+			"webLinkName" : "Preview Dataset",
+			"webLinkType" : "ViewURL"
+		},
+		{
+			"webLinkURI" : "http://www.imr.no/sjomil/index.html",
+			"webLinkName" : "SJØMIL - Database for sjø og miljø",
+			"webLinkType" : "Related"
+		},
+		{
+			"webLinkURI" : "http://www.jerico-ri.eu/wp-content/uploads/2016/02/IMR-logo.jpg",
+			"webLinkType" : "ProviderLogoURL"
+		}
+	],
+	"researchDisciplines" : [
+		{
+			"area" : "Atmospheric Science, Oceanography and Climate Research",
+			"category" : "Natural Sciences",
+			"rnbr" : "313-02",
+			"discipline" : "Oceanography"
+		}
+	]
+}

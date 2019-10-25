@@ -63,7 +63,7 @@ public class ImrSjomilTransformer extends AbstractIteratorTransformer<ImrSjomilV
     @Override
     protected DataCiteJson transformElement(final ImrSjomilVO vo) throws TransformerException
     {
-        final DataCiteJson document = new DataCiteJson(String.valueOf(vo.getId()));
+        final DataCiteJson document = new DataCiteJson(String.format(ImrDataCiteConstants.SJOMIL_ID, vo.getId()));
 
         document.setPublisher(ImrDataCiteConstants.PROVIDER);
         document.setRepositoryIdentifier(ImrDataCiteConstants.REPOSITORY_ID);

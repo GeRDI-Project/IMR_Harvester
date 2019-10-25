@@ -1,0 +1,20 @@
+{
+	"features" : [
+		{
+			"properties" : {
+				"id" : "42",
+				"name" : "OMGWHYARETHECOORDINATESNULL						 "
+			},
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [
+					null,
+					null
+				]
+			},
+			"type" : "Feature"
+		},
+		
+	],
+	"type" : "FeatureCollection"
+}

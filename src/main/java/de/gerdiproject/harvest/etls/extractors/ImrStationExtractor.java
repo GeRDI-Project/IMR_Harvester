@@ -24,11 +24,13 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.vividsolutions.jts.geom.Point;
 
 import de.gerdiproject.harvest.etls.AbstractETL;
 import de.gerdiproject.harvest.imr.constants.ImrStationConstants;
 import de.gerdiproject.harvest.imr.json.StationProperties;
 import de.gerdiproject.harvest.utils.data.HttpRequester;
+import de.gerdiproject.json.GsonUtils;
 import de.gerdiproject.json.geo.Feature;
 import de.gerdiproject.json.geo.FeatureCollection;
 
@@ -40,7 +42,7 @@ import de.gerdiproject.json.geo.FeatureCollection;
  */
 public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 {
-    protected final HttpRequester httpRequester = new HttpRequester();
+    protected final HttpRequester httpRequester = createHttpRequester();
     protected final HttpRequester descriptionHttpRequester = new HttpRequester(new Gson(), StandardCharsets.ISO_8859_1);
 
     protected Iterator<Feature<StationProperties>> featureIterator;
@@ -82,6 +84,29 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
     protected Iterator<ImrStationVO> extractAll() throws ExtractorException
     {
         return new ImrIterator();
+    }
+    
+
+    @Override
+    public void clear()
+    {
+        // nothing to clean up
+    }
+    
+    
+    /**
+     * Creates a {@linkplain HttpRequester} that is able to parse
+     * null-coordinates in {@linkplain Point}s.
+     * 
+     * @return a {@linkplain HttpRequester}
+     */
+    private HttpRequester createHttpRequester()
+    {
+        final Gson gson = 
+                GsonUtils.createGeoJsonGsonBuilder()
+                .registerTypeAdapter(Point.class, new FailsafePointAdapter())
+                .create();
+        return new HttpRequester(gson, StandardCharsets.UTF_8);
     }
 
 
@@ -184,13 +209,5 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
 
             return measurementDates;
         }
-    }
-
-
-    @Override
-    public void clear()
-    {
-        // nothing to clean up
-
     }
 }
