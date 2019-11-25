@@ -38,7 +38,7 @@ public class ImrSjomilTransformerTest extends AbstractIteratorTransformerTest<Im
     private static final int VIEW_ID = 0;
     private static final String OUTPUT_RESOURCE = "output.json";
     private static final String VIEW_PAGE_RESOURCE = "inputViewPage.html";
-    
+
     final DiskIO diskReader = new DiskIO(GsonUtils.createGerdiDocumentGsonBuilder().create(), StandardCharsets.UTF_8);
 
 

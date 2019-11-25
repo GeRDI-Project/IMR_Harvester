@@ -44,19 +44,18 @@ public class ImrStationTransformerTest extends AbstractIteratorTransformerTest<I
 {
     private static final String INPUT_RESOURCE = "input-%d.json";
     private static final String OUTPUT_RESOURCE = "output-%d.json";
-    private static final String CONFIG_RESOURCE = "config.json";
 
     @Parameters(name = "station id: {0}")
     public static Object[] getParameters()
     {
         return new Object[] {42, 1337};
     }
-    
+
 
     private final DiskIO diskReader = new DiskIO(GsonUtils.createGerdiDocumentGsonBuilder().create(), StandardCharsets.UTF_8);
     private final int id;
 
-    
+
     @Override
     protected ContextListener getContextListener()
     {

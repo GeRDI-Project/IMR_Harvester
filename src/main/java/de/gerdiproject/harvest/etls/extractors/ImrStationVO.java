@@ -34,6 +34,7 @@ public class ImrStationVO
     private String description;
     private List<Integer> measurementYears;
     private List<String> measurementDates;
+    private String maximumDate;
 
     /**
      * Retrieves the earliest date of measurement from

@@ -18,9 +18,11 @@ package de.gerdiproject.harvest.etls.extractors;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -46,6 +48,8 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
     protected final HttpRequester descriptionHttpRequester = new HttpRequester(new Gson(), StandardCharsets.ISO_8859_1);
 
     protected Iterator<Feature<StationProperties>> featureIterator;
+    protected String today;
+
     private int featureCount = -1;
 
 
@@ -62,6 +66,7 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
                                                                           responseType);
         this.featureCount = stationsResponse.getFeatures().size();
         this.featureIterator = stationsResponse.getFeatures().iterator();
+        this.today = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH).format(new java.util.Date());
     }
 
 
@@ -85,27 +90,27 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
     {
         return new ImrIterator();
     }
-    
+
 
     @Override
     public void clear()
     {
         // nothing to clean up
     }
-    
-    
+
+
     /**
      * Creates a {@linkplain HttpRequester} that is able to parse
      * null-coordinates in {@linkplain Point}s.
-     * 
+     *
      * @return a {@linkplain HttpRequester}
      */
     private HttpRequester createHttpRequester()
     {
-        final Gson gson = 
-                GsonUtils.createGeoJsonGsonBuilder()
-                .registerTypeAdapter(Point.class, new FailsafePointAdapter())
-                .create();
+        final Gson gson =
+            GsonUtils.createGeoJsonGsonBuilder()
+            .registerTypeAdapter(Point.class, new FailsafePointAdapter())
+            .create();
         return new HttpRequester(gson, StandardCharsets.UTF_8);
     }
 
@@ -146,7 +151,8 @@ public class ImrStationExtractor extends AbstractIteratorExtractor<ImrStationVO>
                        feature,
                        description,
                        measurementYears,
-                       measurementDates);
+                       measurementDates,
+                       today);
         }
 
 

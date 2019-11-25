@@ -18,6 +18,8 @@ package de.gerdiproject.harvest.etls.extractors;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -44,17 +46,17 @@ public class ImrStationExtractorTest extends AbstractIteratorExtractorTest<ImrSt
     private static final String HTTP_RESOURCES = "mockedHttpResponses-%d";
     private static final String OUTPUT_RESOURCE = "output-%d.json";
     private static final String CONFIG_RESOURCE = "config.json";
-    
+
     @Parameters(name = "station id: {0}")
     public static Object[] getParameters()
     {
         return new Object[] {42, 1337};
     }
-    
-    
+
+
     private final DiskIO diskReader = new DiskIO(GsonUtils.createGerdiDocumentGsonBuilder().create(), StandardCharsets.UTF_8);
     private final int id;
-    
+
 
     @Override
     protected ContextListener getContextListener()
@@ -69,13 +71,13 @@ public class ImrStationExtractorTest extends AbstractIteratorExtractorTest<ImrSt
         return new ImrStationETL();
     }
 
-    
+
     @Override
     protected File getConfigFile()
     {
         return getResource(CONFIG_RESOURCE);
     }
-    
+
 
     @Override
     protected File getMockedHttpResponseFolder()
@@ -88,6 +90,9 @@ public class ImrStationExtractorTest extends AbstractIteratorExtractorTest<ImrSt
     protected ImrStationVO getExpectedOutput()
     {
         final File resource = getResource(String.format(OUTPUT_RESOURCE, id));
-        return diskReader.getObject(resource, ImrStationVO.class);
+        final String today = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH).format(new java.util.Date());
+        final String voString = diskReader.getString(resource).replace("${maximumDate}", today);
+
+        return GsonUtils.createGerdiDocumentGsonBuilder().create().fromJson(voString,  ImrStationVO.class);
     }
 }

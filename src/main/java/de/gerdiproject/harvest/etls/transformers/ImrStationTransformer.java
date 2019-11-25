@@ -125,7 +125,7 @@ public class ImrStationTransformer extends AbstractIteratorTransformer<ImrStatio
 
         // add a link to all measured data
         researchDataList.add(new ResearchData(
-                                 String.format(ImrStationConstants.DOWNLOAD_MEASUREMENTS_URL, stationId, new java.util.Date()),
+                                 String.format(ImrStationConstants.DOWNLOAD_MEASUREMENTS_URL, stationId, vo.getMaximumDate()),
                                  ImrDataCiteConstants.STATION_DATASET_TITLE,
                                  ImrDataCiteConstants.TXT_FORMAT));
 

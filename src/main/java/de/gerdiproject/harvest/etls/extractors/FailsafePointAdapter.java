@@ -40,8 +40,12 @@ public class FailsafePointAdapter extends AbstractGeometryAdapter<Point>
     {
         super(geoFactory);
     }
-    
-    
+
+
+    /**
+     * Simple constructor that builds a new {@linkplain GeometryFactory} for the
+     * adapter.
+     */
     public FailsafePointAdapter()
     {
         super(new GeometryFactory());
@@ -61,12 +65,12 @@ public class FailsafePointAdapter extends AbstractGeometryAdapter<Point>
         final Coordinate coordinate = jsonArrayToCoordinate(jsonCoordinates);
         return coordinate == null ? null : factory.createPoint(coordinate);
     }
-    
-    
+
+
     @Override
-    protected Coordinate jsonArrayToCoordinate(JsonArray jsonArray)
+    protected Coordinate jsonArrayToCoordinate(final JsonArray jsonArray)
     {
-        if(jsonArray == null || jsonArray.size() < 2 || jsonArray.get(0).isJsonNull() || jsonArray.get(1).isJsonNull())
+        if (jsonArray == null || jsonArray.size() < 2 || jsonArray.get(0).isJsonNull() || jsonArray.get(1).isJsonNull())
             return null;
         else
             return super.jsonArrayToCoordinate(jsonArray);

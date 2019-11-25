@@ -312,9 +312,9 @@
 			"researchDataType" : "JSON"
 		},
 		{
-			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/downloaddata?fromdate\u003d01.01.1930\u0026todate\u003d25.10.2019\u0026stations\u003d1337\u0026depths\u003d1,5,10,20,30,50,75,100,125,135,150,200,250,290,300\u0026month_mean\u003dmonth",
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/downloaddata?fromdate\u003d01.01.1930\u0026todate\u003d03.03.3000\u0026stations\u003d1337\u0026depths\u003d1,5,10,20,30,50,75,100,125,135,150,200,250,290,300\u0026month_mean\u003dmonth",
 			"researchDataLabel" : "Complete Dataset",
-			"researchDataIdentifier" : "-1980525397",
+			"researchDataIdentifier" : "2121966968",
 			"researchDataType" : "TXT"
 		},
 		{

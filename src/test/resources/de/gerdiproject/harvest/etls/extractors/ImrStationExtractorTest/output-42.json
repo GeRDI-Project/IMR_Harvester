@@ -15,5 +15,6 @@
 		1986,
 		1985
 	],
-	"measurementDates" : []
+	"measurementDates" : [],
+	"maximumDate" : "${maximumDate}"
 }

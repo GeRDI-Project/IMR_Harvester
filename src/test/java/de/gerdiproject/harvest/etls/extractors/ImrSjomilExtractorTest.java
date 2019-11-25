@@ -40,8 +40,8 @@ public class ImrSjomilExtractorTest extends AbstractIteratorExtractorTest<ImrSjo
     private static final String HTTP_RESOURCE_FOLDER = "mockedHttpResponses";
     private static final String CONFIG_RESOURCE = "config.json";
     private static final String VIEW_PAGE_URL = String.format(ImrSjomilConstants.VIEW_URL, VIEW_ID);
-    
-    
+
+
     private final DiskIO diskReader = new DiskIO(GsonUtils.createGerdiDocumentGsonBuilder().create(), StandardCharsets.UTF_8);
 
 
@@ -58,13 +58,13 @@ public class ImrSjomilExtractorTest extends AbstractIteratorExtractorTest<ImrSjo
         return new ImrSjomilETL();
     }
 
-    
+
     @Override
     protected File getConfigFile()
     {
         return getResource(CONFIG_RESOURCE);
     }
-    
+
 
     @Override
     protected File getMockedHttpResponseFolder()
@@ -76,9 +76,9 @@ public class ImrSjomilExtractorTest extends AbstractIteratorExtractorTest<ImrSjo
     @Override
     protected ImrSjomilVO getExpectedOutput()
     {
-        final File mockedFilePath = 
-                HttpRequesterUtils.urlToFilePath(VIEW_PAGE_URL, getResource(HTTP_RESOURCE_FOLDER));
-        
+        final File mockedFilePath =
+            HttpRequesterUtils.urlToFilePath(VIEW_PAGE_URL, getResource(HTTP_RESOURCE_FOLDER));
+
         return new ImrSjomilVO(VIEW_ID, diskReader.getHtml(mockedFilePath.toString()));
     }
 }

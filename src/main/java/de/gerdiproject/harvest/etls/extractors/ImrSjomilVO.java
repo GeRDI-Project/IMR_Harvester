@@ -31,12 +31,12 @@ public class ImrSjomilVO
 {
     private int id;
     private Document viewPage;
-    
-    
+
+
     /**
      * The original {@linkplain Document#equals(Object)} function does not
      * compare the actual content of the HTML objects. In order to compare
-     * the {@linkplain ImrSjomilVO#viewPage}, the {@linkplain Document#hasSameValue(Object)} 
+     * the {@linkplain ImrSjomilVO#viewPage}, the {@linkplain Document#hasSameValue(Object)}
      * function must be used instead.
      *
      * @param obj the object that is to be compared to the VO
@@ -47,27 +47,28 @@ public class ImrSjomilVO
     {
         if (this == obj)
             return true;
-        
+
         if (obj == null)
             return false;
-        
+
         if (getClass() != obj.getClass())
             return false;
-        
-        ImrSjomilVO other = (ImrSjomilVO) obj;
+
+        final ImrSjomilVO other = (ImrSjomilVO) obj;
+
         if (id != other.id)
             return false;
-        
+
         if (viewPage == null) {
             if (other.viewPage != null)
                 return false;
         } else if (!viewPage.hasSameValue(other.viewPage))
             return false;
-        
+
         return true;
     }
-    
-    
+
+
     @Override
     public int hashCode()
     {
@@ -77,6 +78,6 @@ public class ImrSjomilVO
         result = prime * result + ((viewPage == null) ? 0 : viewPage.hashCode());
         return result;
     }
-    
-    
+
+
 }
