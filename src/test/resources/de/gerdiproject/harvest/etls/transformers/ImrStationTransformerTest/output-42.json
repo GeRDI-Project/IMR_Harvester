@@ -1,0 +1,281 @@
+{
+	"creators" : [
+		{
+			"creatorName" : {
+				"value" : "Havforskningsinstituttet - Institute for Marine Research (IMR)",
+				"nameType" : "Organisational"
+			}
+		}
+	],
+	"titles" : [
+		{
+			"value" : "Norwegian Hydrographic Station: OMGWHYARETHECOORDINATESNULL",
+			"titleType" : "TranslatedTitle",
+			"lang" : "en"
+		},
+		{
+			"value" : "Stasjon: OMGWHYARETHECOORDINATESNULL",
+			"lang" : "no"
+		}
+	],
+	"publisher" : {
+		"value" : "Havforskningsinstituttet - Institute for Marine Research (IMR)"
+	},
+	"resourceType" : {
+		"value" : "time series measurements",
+		"resourceTypeGeneral" : "Dataset"
+	},
+	"subjects" : [
+		{
+			"value" : "år",
+			"lang" : "no"
+		},
+		{
+			"value" : "saltholdighet",
+			"lang" : "no"
+		},
+		{
+			"value" : "dybde",
+			"lang" : "no"
+		},
+		{
+			"value" : "average normal value",
+			"lang" : "en"
+		},
+		{
+			"value" : "temperatur",
+			"lang" : "no"
+		},
+		{
+			"value" : "gjennomsnittlig normalverdi",
+			"lang" : "no"
+		},
+		{
+			"value" : "year",
+			"lang" : "en"
+		},
+		{
+			"value" : "depth",
+			"lang" : "en"
+		},
+		{
+			"value" : "temperature",
+			"lang" : "en"
+		},
+		{
+			"value" : "salinity",
+			"lang" : "en"
+		}
+	],
+	"language" : "no",
+	"formats" : [
+		"TXT",
+		"JSON"
+	],
+	"rightsList" : [
+		{
+			"value" : "IMR Data Policy",
+			"lang" : "en",
+			"rightsURI" : "https://www.imr.no/filarkiv/2016/09/hi-datapolicy-revised2016-final-eng.pdf/en"
+		},
+		{
+			"value" : "Datapolitikk for Havforskningsinstituttet",
+			"lang" : "no",
+			"rightsURI" : "http://www.imr.no/filarkiv/2013/03/datapolitikk_nmd.pdf/nb-no"
+		}
+	],
+	"descriptions" : [
+		{
+			"value" : "Let\u0027s test some unusual characters: å ø æ Did it work?",
+			"descriptionType" : "Abstract",
+			"lang" : "no"
+		}
+	],
+	"repositoryIdentifier" : "IMR",
+	"webLinks" : [
+		{
+			"webLinkURI" : "http://www.imr.no/forskning/forskningsdata/stasjoner/images/fastestasjoner.jpg",
+			"webLinkName" : "Oversikt over stasjoner",
+			"webLinkType" : "ThumbnailURL"
+		},
+		{
+			"webLinkURI" : "http://www.jerico-ri.eu/wp-content/uploads/2016/02/IMR-logo.jpg",
+			"webLinkType" : "ProviderLogoURL"
+		},
+		{
+			"webLinkURI" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view?station\u003dOMGWHYARETHECOORDINATESNULL",
+			"webLinkName" : "View OMGWHYARETHECOORDINATESNULL",
+			"webLinkType" : "ViewURL"
+		},
+		{
+			"webLinkURI" : "http://www.imr.no/forskning/forskningsdata/stasjoner/",
+			"webLinkName" : "Faste hydrografiske stasjoner",
+			"webLinkType" : "Related"
+		},
+		{
+			"webLinkURI" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/initdownload",
+			"webLinkName" : "Last ned data",
+			"webLinkType" : "Related"
+		}
+	],
+	"researchDataList" : [
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/salinity/1986/1",
+			"researchDataLabel" : "Salinity in Year 1986",
+			"researchDataIdentifier" : "-133856573",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/temperature/1988",
+			"researchDataLabel" : "Mean Temperature in Year 1988",
+			"researchDataIdentifier" : "-1902697820",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/temperature/1990/1",
+			"researchDataLabel" : "Temperature in Year 1990",
+			"researchDataIdentifier" : "1180249605",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/salinity/1986",
+			"researchDataLabel" : "Mean Salinity in Year 1986",
+			"researchDataIdentifier" : "1490256457",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/salinity/1985",
+			"researchDataLabel" : "Mean Salinity in Year 1985",
+			"researchDataIdentifier" : "1490256456",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/temperature/1985/1",
+			"researchDataLabel" : "Temperature in Year 1985",
+			"researchDataIdentifier" : "1180224619",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/temperature/1989",
+			"researchDataLabel" : "Mean Temperature in Year 1989",
+			"researchDataIdentifier" : "-1902697819",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/temperature/1987/1",
+			"researchDataLabel" : "Temperature in Year 1987",
+			"researchDataIdentifier" : "1180226541",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/temperature/1987",
+			"researchDataLabel" : "Mean Temperature in Year 1987",
+			"researchDataIdentifier" : "-1902697821",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/salinity/1990/1",
+			"researchDataLabel" : "Salinity in Year 1990",
+			"researchDataIdentifier" : "-133832548",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/temperature/1985",
+			"researchDataLabel" : "Mean Temperature in Year 1985",
+			"researchDataIdentifier" : "-1902697823",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/salinity/1990",
+			"researchDataLabel" : "Mean Salinity in Year 1990",
+			"researchDataIdentifier" : "1490256482",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/temperature/1986/1",
+			"researchDataLabel" : "Temperature in Year 1986",
+			"researchDataIdentifier" : "1180225580",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/downloaddata?fromdate\u003d01.01.1930\u0026todate\u003d03.03.3000\u0026stations\u003d42\u0026depths\u003d1,5,10,20,30,50,75,100,125,135,150,200,250,290,300\u0026month_mean\u003dmonth",
+			"researchDataLabel" : "Complete Dataset",
+			"researchDataIdentifier" : "-899833216",
+			"researchDataType" : "TXT"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/temperature/1988/1",
+			"researchDataLabel" : "Temperature in Year 1988",
+			"researchDataIdentifier" : "1180227502",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/temperature/1989/1",
+			"researchDataLabel" : "Temperature in Year 1989",
+			"researchDataIdentifier" : "1180228463",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/salinity/1987",
+			"researchDataLabel" : "Mean Salinity in Year 1987",
+			"researchDataIdentifier" : "1490256458",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/salinity/1989",
+			"researchDataLabel" : "Mean Salinity in Year 1989",
+			"researchDataIdentifier" : "1490256460",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/salinity/1985/1",
+			"researchDataLabel" : "Salinity in Year 1985",
+			"researchDataIdentifier" : "-133857534",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/salinity/1988",
+			"researchDataLabel" : "Mean Salinity in Year 1988",
+			"researchDataIdentifier" : "1490256459",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/salinity/1988/1",
+			"researchDataLabel" : "Salinity in Year 1988",
+			"researchDataIdentifier" : "-133854651",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/salinity/1987/1",
+			"researchDataLabel" : "Salinity in Year 1987",
+			"researchDataIdentifier" : "-133855612",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/temperature/1986",
+			"researchDataLabel" : "Mean Temperature in Year 1986",
+			"researchDataIdentifier" : "-1902697822",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getmeanforyear/42/1/temperature/1990",
+			"researchDataLabel" : "Mean Temperature in Year 1990",
+			"researchDataIdentifier" : "-1902697797",
+			"researchDataType" : "JSON"
+		},
+		{
+			"researchDataURL" : "http://www.imr.no/forskning/forskningsdata/stasjoner/view/getyeardata/42/salinity/1989/1",
+			"researchDataLabel" : "Salinity in Year 1989",
+			"researchDataIdentifier" : "-133853690",
+			"researchDataType" : "JSON"
+		}
+	],
+	"researchDisciplines" : [
+		{
+			"area" : "Atmospheric Science, Oceanography and Climate Research",
+			"category" : "Natural Sciences",
+			"rnbr" : "313-02",
+			"discipline" : "Oceanography"
+		}
+	]
+}

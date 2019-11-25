@@ -1,0 +1,20 @@
+{
+	"feature" : {
+		"type" : "Feature",
+		"properties" : {
+			"id" : "42",
+			"name" : "OMGWHYARETHECOORDINATESNULL\t\t\t\t\t\t "
+		}
+	},
+	"description" : "Let\u0027s test some unusual characters: å ø æ Did it work?",
+	"measurementYears" : [
+		1990,
+		1989,
+		1988,
+		1987,
+		1986,
+		1985
+	],
+	"measurementDates" : [],
+	"maximumDate" : "${maximumDate}"
+}

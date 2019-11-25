@@ -1,0 +1,19 @@
+{
+	"features" : [
+		{
+			"properties" : {
+				"id" : "1337",
+				"name" : "MockedStationName						 "
+			},
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [
+					123.4,
+					456.7
+				]
+			},
+			"type" : "Feature"
+		}
+	],
+	"type" : "FeatureCollection"
+}

@@ -44,6 +44,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ImrDataCiteConstants
 {
+    // ID
+    public static final String SJOMIL_ID = "IMR_SJOMIL_%d";
 
     // RESOURCE TYPE
     public static final ResourceType RESOURCE_TYPE = createResourceType();
